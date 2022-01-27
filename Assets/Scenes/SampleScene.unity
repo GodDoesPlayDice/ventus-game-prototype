@@ -122536,7 +122536,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.877533, y: 1}
+    m_SensorSize: {x: 1.095458, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -122698,10 +122698,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 417618211283661218, guid: 7ff74f338e24540f5a2ee4f01e312732, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 417618211355460929, guid: 7ff74f338e24540f5a2ee4f01e312732, type: 3}
       propertyPath: m_Name
       value: Player
@@ -122763,18 +122759,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7576361799828878329, guid: ff0b0514cdc334bddacbb5bf89b61b87, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 7576361799828878329, guid: ff0b0514cdc334bddacbb5bf89b61b87, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7576361799828878330, guid: ff0b0514cdc334bddacbb5bf89b61b87, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7576361800027588377, guid: ff0b0514cdc334bddacbb5bf89b61b87, type: 3}
       propertyPath: m_Name
       value: Enemy

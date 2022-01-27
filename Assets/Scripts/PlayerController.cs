@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -20,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool isDead = false;
 
+
+    public UnityEvent<Vector3> onChangePosition;
 
     // temp
     private GameObject _pointer;
@@ -80,6 +84,12 @@ public class PlayerController : MonoBehaviour
         if (_pointer == null) _pointer = GameObject.Find("Pointer");
     }
 
+    private void Start()
+    {
+        onChangePosition ??= new UnityEvent<Vector3>();
+        StartCoroutine(UpdatePositionCoroutine());
+    }
+
     private void Update()
     {
         // if (_animator == null || isDead) return;
@@ -101,15 +111,19 @@ public class PlayerController : MonoBehaviour
         // }
     }
 
-
-    private void FixedUpdate()
+    private IEnumerator UpdatePositionCoroutine()
     {
-        Movement();
+        for (;;)
+        {
+            if (!isDead);
+            onChangePosition.Invoke(transform.position);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
-    private void Movement()
-    {
-        if (_rb != null && !isDead)
-            _rb.MovePosition(_rb.position + _movementInput * movementSpeed * Time.fixedDeltaTime);
-    }
+    // private void DirectMovement()
+    // {
+    //     if (_rb != null && !isDead)
+    //         _rb.MovePosition(_rb.position + _movementInput * movementSpeed * Time.fixedDeltaTime);
+    // }
 }
