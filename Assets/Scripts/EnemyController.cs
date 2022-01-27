@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(WalkerController))]
@@ -13,6 +14,8 @@ public class EnemyController : MonoBehaviour
     private GameObject _player;
     private PlayerController _playerController;
     private Vector3 _playerPosition;
+
+    private bool _chasingPlayer = false;
 
     private void Awake()
     {
@@ -31,9 +34,12 @@ public class EnemyController : MonoBehaviour
         float distance = Vector3.Distance(transform.position, playerPos);
         if (distance <= distToNoticePlayer)
         {
+            _chasingPlayer = true;
             _walkerController.WalkTo(playerPos);
-        } else if (distance >= distToForgetPlayer)
+        }
+        else if (distance >= distToForgetPlayer && _chasingPlayer)
         {
+            _chasingPlayer = false;
             Debug.Log("Player lost for enemy", this);
         }
     }

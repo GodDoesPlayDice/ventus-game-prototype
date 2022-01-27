@@ -14,21 +14,16 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
-    
+
     [SerializeField] private float movementSpeed;
-    private Rigidbody2D _rb;
     private NavMeshAgent _navMeshAgent;
     private Damageable _damageable;
-    
     private WalkerController _walkerController;
+    
     private Camera _cam;
-    private Vector2 _movementInput;
-    private Vector2 _mousePosition;
+    private GameObject _pointer;
 
     public UnityEvent<Vector3> onChangePosition;
-
-    // temp
-    private GameObject _pointer;
     
     // animator stuff
     private static readonly int Walk = Animator.StringToHash("walk");
@@ -39,7 +34,6 @@ public class PlayerController : MonoBehaviour
         var pos = value.ReadValue<Vector2>();
         var objectPos = _cam.ScreenToWorldPoint(pos);
         _pointer.transform.position = new Vector3(objectPos.x, objectPos.y, 0f);
-        _mousePosition = pos;
     }
 
     public void OnPointerClick(InputAction.CallbackContext value)
@@ -50,22 +44,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // public void OnMove(InputAction.CallbackContext value)
-    // {
-    //     if (value.performed)
-    //     {
-    //         _movementInput = value.ReadValue<Vector2>();
-    //     }
-    //     else if (value.canceled)
-    //     {
-    //         _movementInput = Vector2.zero;
-    //     }
-    // }
-
     public void OnAttack(InputAction.CallbackContext value)
     {
         if (value.performed && !_damageable.IsDead)
         {
+        }
+    }
+
+    public void OnPause(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            if (GameManager.GameState != GameState.Pause)
+            {
+                GameManager.SetGameState(GameState.Pause);
+            }
+            else
+            {
+                GameManager.SetGameState(GameState.Play);
+            }
         }
     }
 
@@ -83,7 +80,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        TryGetComponent(out _rb);
         TryGetComponent(out _navMeshAgent);
         TryGetComponent(out _damageable);
         TryGetComponent(out _walkerController);
@@ -100,7 +96,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (animator == null || _damageable.IsDead || _navMeshAgent == null) return;
-        
+
         if (_navMeshAgent.velocity.magnitude >= 0.01f)
         {
             animator.SetBool(Walk, true);
@@ -112,6 +108,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool(Up, false);
             }
+
             if (_navMeshAgent.velocity.x >= 0.2f)
             {
                 spriteRenderer.flipX = false;
@@ -131,8 +128,10 @@ public class PlayerController : MonoBehaviour
     {
         for (;;)
         {
-            if (!_damageable.IsDead);
-            onChangePosition.Invoke(transform.position);
+            if (!_damageable.IsDead)
+            {
+                onChangePosition.Invoke(transform.position);
+            }
             yield return new WaitForSeconds(0.1f);
         }
     }
