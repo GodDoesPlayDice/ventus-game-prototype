@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(WalkerController))]
 public class PlayerController : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     [SerializeField] private float movementSpeed;
     private Rigidbody2D _rb;
     private Animator _animator;
+    private WalkerController _walkerController;
     private Camera _cam;
     private Vector2 _movementInput;
     private Vector2 _mousePosition;
@@ -34,21 +36,21 @@ public class PlayerController : MonoBehaviour
     {
         if (value.performed)
         {
-            PointerLogic(_mousePosition);
+            _walkerController.WalkTo(_pointer.transform.position);
         }
     }
 
-    public void OnMove(InputAction.CallbackContext value)
-    {
-        if (value.performed)
-        {
-            _movementInput = value.ReadValue<Vector2>();
-        }
-        else if (value.canceled)
-        {
-            _movementInput = Vector2.zero;
-        }
-    }
+    // public void OnMove(InputAction.CallbackContext value)
+    // {
+    //     if (value.performed)
+    //     {
+    //         _movementInput = value.ReadValue<Vector2>();
+    //     }
+    //     else if (value.canceled)
+    //     {
+    //         _movementInput = Vector2.zero;
+    //     }
+    // }
 
     public void OnAttack(InputAction.CallbackContext value)
     {
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         TryGetComponent(out _rb);
         TryGetComponent(out _animator);
+        TryGetComponent(out _walkerController);
         if (_cam == null) _cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         if (_pointer == null) _pointer = GameObject.Find("Pointer");
     }
