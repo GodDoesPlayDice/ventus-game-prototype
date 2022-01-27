@@ -8,5 +8,10 @@ public class CombatController : MonoBehaviour
 
 
     private float _currentStamina;
-    
+
+
+    public void Attack(Damageable victim)
+    {
+        victim.TakeDamage(damage);
+    }
 }

@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(WalkerController))]
+[RequireComponent(typeof(Damageable))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -17,14 +18,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movementSpeed;
     private Rigidbody2D _rb;
     private NavMeshAgent _navMeshAgent;
+    private Damageable _damageable;
     
     private WalkerController _walkerController;
     private Camera _cam;
     private Vector2 _movementInput;
     private Vector2 _mousePosition;
-
-    [SerializeField] private bool isDead = false;
-
 
     public UnityEvent<Vector3> onChangePosition;
 
@@ -65,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext value)
     {
-        if (value.performed && !isDead)
+        if (value.performed && !_damageable.IsDead)
         {
         }
     }
@@ -86,6 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         TryGetComponent(out _rb);
         TryGetComponent(out _navMeshAgent);
+        TryGetComponent(out _damageable);
         TryGetComponent(out _walkerController);
         if (_cam == null) _cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         if (_pointer == null) _pointer = GameObject.Find("Pointer");
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (animator == null || isDead || _navMeshAgent == null) return;
+        if (animator == null || _damageable.IsDead || _navMeshAgent == null) return;
         
         if (_navMeshAgent.velocity.magnitude >= 0.01f)
         {
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
     {
         for (;;)
         {
-            if (!isDead);
+            if (!_damageable.IsDead);
             onChangePosition.Invoke(transform.position);
             yield return new WaitForSeconds(0.1f);
         }
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
     // private void DirectMovement()
     // {
-    //     if (_rb != null && !isDead)
+    //     if (_rb != null && !_damageable.IsDead)
     //         _rb.MovePosition(_rb.position + _movementInput * movementSpeed * Time.fixedDeltaTime);
     // }
 }

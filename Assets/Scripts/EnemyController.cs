@@ -2,12 +2,14 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(WalkerController))]
+[RequireComponent(typeof(Damageable))]
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float distToNoticePlayer;
     [SerializeField] private float distToForgetPlayer;
 
     private WalkerController _walkerController;
+    private Damageable _damageable;
     private GameObject _player;
     private PlayerController _playerController;
     private Vector3 _playerPosition;
@@ -15,6 +17,7 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         TryGetComponent(out _walkerController);
+        TryGetComponent(out _damageable);
         // find player
         _player = GameObject.Find("Player");
         if (_player != null) _player.TryGetComponent(out _playerController);
