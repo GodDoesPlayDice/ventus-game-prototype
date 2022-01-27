@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
-    
+
     private NavMeshAgent _navMeshAgent;
     private Damageable _damageable;
     private ActorController _actorController;
@@ -83,9 +83,9 @@ public class PlayerController : MonoBehaviour
             _actorController.Act(GameActions.Attack);
             return;
         }
-        if (objectTag == "Ground")
+        else if (objectTag == "Ground")
         {
-            _actorController.destination = _pointer.transform.position;
+            _actorController.Destination = _pointer.transform.position;
             _actorController.Act(GameActions.Move);
             return;
         }

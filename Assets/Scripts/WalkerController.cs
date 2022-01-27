@@ -7,12 +7,10 @@ using UnityEngine.AI;
 public class WalkerController : MonoBehaviour
 {
        private NavMeshAgent _navMeshAgent;
-       private ActorController _actorController;
 
        private void Awake()
        {
               TryGetComponent(out _navMeshAgent);
-              TryGetComponent(out _actorController);
        }
 
        private void Start()
@@ -25,7 +23,6 @@ public class WalkerController : MonoBehaviour
        public void WalkTo(Vector3 position)
        {
            if (_navMeshAgent == null) return;
-           if (_actorController == null || _actorController.actorType != GameManager.CurrentActor) return;
            _navMeshAgent.destination = position;
        } 
 }
