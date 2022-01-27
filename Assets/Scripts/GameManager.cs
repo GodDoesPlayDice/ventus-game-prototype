@@ -1,29 +1,31 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using Enums;
 using UnityEngine.Events;
 
-public enum GameState
-{
-    Play,
-    Pause,
-}
 
 public class GameManager : MonoBehaviour
 {
     public static GameState GameState { get; private set; } = GameState.Play;
+    public static Actor CurrentActor { get; private set; } = Actor.Player;
 
     public static UnityEvent<GameState> OnGameStateChange;
+    public static UnityEvent<Actor> OnCurrentActorChange;
 
     private void Awake()
     {
         OnGameStateChange ??= new UnityEvent<GameState>();
+        OnCurrentActorChange ??= new UnityEvent<Actor>();
     }
+
     public static void SetGameState(GameState newState)
     {
         if (newState != GameState)
         {
             OnGameStateChange.Invoke(newState);
         }
+
         switch (newState)
         {
             case GameState.Play:
@@ -36,6 +38,21 @@ public class GameManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
 
-        GameState = newState;   
+        GameState = newState;
     }
+
+    public static void SetCurrentActor(Actor newActor)
+    {
+        OnCurrentActorChange.Invoke(newActor);
+        switch (CurrentActor)
+        {
+            case Actor.Player:
+                break;
+            case Actor.AI:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(newActor), newActor, null);
+        }
+    }
+    
 }

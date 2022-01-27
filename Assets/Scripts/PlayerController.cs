@@ -6,25 +6,28 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Enums;
+
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(WalkerController))]
 [RequireComponent(typeof(Damageable))]
+[RequireComponent(typeof(ActorController))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
-
-    [SerializeField] private float movementSpeed;
+    
     private NavMeshAgent _navMeshAgent;
     private Damageable _damageable;
-    private WalkerController _walkerController;
-    
+    private ActorController _actorController;
+
     private Camera _cam;
+    private Vector2 _mousePosition;
     private GameObject _pointer;
 
     public UnityEvent<Vector3> onChangePosition;
-    
+
     // animator stuff
     private static readonly int Walk = Animator.StringToHash("walk");
     private static readonly int Up = Animator.StringToHash("up");
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         var pos = value.ReadValue<Vector2>();
         var objectPos = _cam.ScreenToWorldPoint(pos);
+        _mousePosition = pos;
         _pointer.transform.position = new Vector3(objectPos.x, objectPos.y, 0f);
     }
 
@@ -40,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         if (value.performed)
         {
-            _walkerController.WalkTo(_pointer.transform.position);
+            PointerClickLogic();
         }
     }
 
@@ -66,15 +70,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PointerLogic(Vector2 mousePosition)
+    private void PointerClickLogic()
     {
         if (_cam == null) return;
-        Vector2 v = _cam.ScreenToWorldPoint(mousePosition);
+        Vector2 v = _cam.ScreenToWorldPoint(_mousePosition);
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         var hit = Physics2D.Raycast(v, Vector2.zero);
-        if (hit)
+        var objectTag = hit.collider.gameObject.tag;
+        if (objectTag == "Enemy")
         {
-            Debug.Log(" mouse over: " + hit.collider.gameObject.name);
+            if (_actorController.animator == null) _actorController.animator = animator;
+            _actorController.Act(GameActions.Attack);
+            return;
+        }
+        if (objectTag == "Ground")
+        {
+            _actorController.destination = _pointer.transform.position;
+            _actorController.Act(GameActions.Move);
+            return;
         }
     }
 
@@ -82,7 +95,7 @@ public class PlayerController : MonoBehaviour
     {
         TryGetComponent(out _navMeshAgent);
         TryGetComponent(out _damageable);
-        TryGetComponent(out _walkerController);
+        TryGetComponent(out _actorController);
         if (_cam == null) _cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         if (_pointer == null) _pointer = GameObject.Find("Pointer");
     }
@@ -132,13 +145,8 @@ public class PlayerController : MonoBehaviour
             {
                 onChangePosition.Invoke(transform.position);
             }
-            yield return new WaitForSeconds(0.1f);
+
+            yield return new WaitForSeconds(0.2f);
         }
     }
-
-    // private void DirectMovement()
-    // {
-    //     if (_rb != null && !_damageable.IsDead)
-    //         _rb.MovePosition(_rb.position + _movementInput * movementSpeed * Time.fixedDeltaTime);
-    // }
 }

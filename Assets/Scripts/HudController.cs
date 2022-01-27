@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using Enums;
 
 public class HudController : MonoBehaviour
 {

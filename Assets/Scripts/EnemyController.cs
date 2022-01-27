@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(WalkerController))]
 [RequireComponent(typeof(Damageable))]
+[RequireComponent(typeof(ActorController))]
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float distToNoticePlayer;
@@ -16,7 +17,6 @@ public class EnemyController : MonoBehaviour
     private Vector3 _playerPosition;
 
     private bool _chasingPlayer = false;
-
     private void Awake()
     {
         TryGetComponent(out _walkerController);

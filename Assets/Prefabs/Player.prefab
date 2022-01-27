@@ -315,6 +315,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0e570d4d-6e1f-4c02-86bc-cd99e2bfaa41
     m_ActionName: Player/PointerClick[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 417618211355460935}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9337f250-08be-4dab-8558-935fa45519bb
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -329,7 +345,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 417618211355460929}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 10
   m_Acceleration: 50
   avoidancePriority: 50
@@ -356,8 +372,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 417618211283661218}
   animator: {fileID: 250790722}
-  movementSpeed: 4
-  isDead: 0
   onChangePosition:
     m_PersistentCalls:
       m_Calls: []
