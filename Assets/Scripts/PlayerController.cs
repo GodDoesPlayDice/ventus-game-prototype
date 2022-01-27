@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,9 +18,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool isDead = false;
 
+
+    // temp
+    private GameObject _pointer;
+
     public void OnMousePosition(InputAction.CallbackContext value)
     {
-        _mousePosition = value.ReadValue<Vector2>();
+        Vector2 pos = value.ReadValue<Vector2>();
+        Vector3 objectPos = _cam.ScreenToWorldPoint(pos);
+        _pointer.transform.position = new Vector3(objectPos.x, objectPos.y, 0f);
+        _mousePosition = pos;
     }
 
     public void OnPointerClick(InputAction.CallbackContext value)
@@ -66,6 +74,7 @@ public class PlayerController : MonoBehaviour
         TryGetComponent(out _rb);
         TryGetComponent(out _animator);
         if (_cam == null) _cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        if (_pointer == null) _pointer = GameObject.Find("Pointer");
     }
 
     private void Update()
