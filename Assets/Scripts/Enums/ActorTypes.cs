@@ -1,6 +1,6 @@
 namespace Enums
 {
-    public enum Actor
+    public enum ActorTypes
     {
         Player,
         AI

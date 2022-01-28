@@ -9,7 +9,7 @@ using UnityEngine.PlayerLoop;
 public class ActorController : MonoBehaviour
 {
     public ActorState actorState = ActorState.Idle;
-    [SerializeField] private Actor actorType = Actor.AI;
+    [SerializeField] private ActorTypes actorType = ActorTypes.AI;
     [SerializeField] private float attackDuration = 1f;
     private float _lastAttackTime;
 
@@ -29,33 +29,33 @@ public class ActorController : MonoBehaviour
     public void Act(Vector3 pos)
     {
         _currentDestination = pos;
-        Act(GameActions.Move);
+        Act(ActorActions.Move);
     }
 
     public void Act(Damageable victim)
     {
         _currentVictim = victim;
-        Act(GameActions.Attack);
+        Act(ActorActions.Attack);
     }
 
-    private void Act(GameActions action)
+    private void Act(ActorActions action)
     {
         if (actorState == ActorState.Acting) return;
         actorState = ActorState.Acting;
         switch (action)
         {
-            case GameActions.Move:
+            case ActorActions.Move:
                 // Debug.Log($"walking to {_currentDestination}");
                 _walker.Walk(_currentDestination);
                 StartCoroutine(CheckReachDestinationRoutine());
                 break;
-            case GameActions.Attack:
+            case ActorActions.Attack:
                 // Debug.Log($"attacked {_currentVictim.name}");
                 _animationManager.AttackAnimation();
                 _attacker.Attack(_currentVictim);
                 StartCoroutine(CountAfterAttackRoutine());
                 break;
-            case GameActions.Interact:
+            case ActorActions.Interact:
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(action), action, null);
