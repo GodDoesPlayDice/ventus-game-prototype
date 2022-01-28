@@ -352,7 +352,7 @@ NavMeshAgent:
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -416,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorState: 1
   actorType: 1
+  attackDuration: 1
 --- !u!114 &7205130213514560575
 MonoBehaviour:
   m_ObjectHideFlags: 0
