@@ -12,7 +12,7 @@ public class TurnManager : MonoBehaviour
     public static ActorController CurrentActor;
     public static ActorController PlayerActor;
 
-    private List<ActorController> _actorsQueueList;
+    [SerializeField]private List<ActorController> _actorsQueueList;
 
     public UnityEvent<List<ActorController>> onQueueChange;
 
