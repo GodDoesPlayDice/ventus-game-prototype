@@ -34,7 +34,7 @@ public class TurnManager : MonoBehaviour
 
         // check if current actor is dead
         CurrentActor = _actorsQueueList[0];
-        Debug.Log($"current actor {CurrentActor}");
+        // Debug.Log($"current actor {CurrentActor}");
         // perform the action of the new first-in-line actor
     }
 
@@ -45,7 +45,7 @@ public class TurnManager : MonoBehaviour
             return false;
         }
 
-        Debug.Log($"actor added to queue {actor.name}");
+        // Debug.Log($"actor added to queue {actor.name}");
         _actorsQueueList.Add(actor);
         actor.onActionEnded.AddListener(NextTurn);
         return true;
@@ -58,10 +58,15 @@ public class TurnManager : MonoBehaviour
             return false;
         }
 
-        Debug.Log($"actor removed from queue {actor.name}");
+        // Debug.Log($"actor removed from queue {actor.name}");
         int index = _actorsQueueList.IndexOf(actor);
         _actorsQueueList.RemoveAt(index);
         actor.onActionEnded.RemoveListener(NextTurn);
         return true;
+    }
+
+    public bool IsInQueueList(ActorController actor)
+    {
+        return _actorsQueueList != null && _actorsQueueList.Contains(actor);
     }
 }

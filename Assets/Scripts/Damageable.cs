@@ -4,25 +4,25 @@ using UnityEngine;
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100;
-    private float _currentHealth;
+    [SerializeField] private float currentHealth;
 
     public bool IsDead { get; private set; } = false;
 
     private void Start()
     {
-        _currentHealth = maxHealth;
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(float damage)
     {
-        var newHealth = Mathf.Clamp((_currentHealth - damage), 0, maxHealth);
+        var newHealth = Mathf.Clamp((currentHealth - damage), 0, maxHealth);
         if (newHealth <= 0)
         {
             IsDead = true;
             Die();
         }
 
-        _currentHealth = newHealth;
+        currentHealth = newHealth;
     }
 
     private void Die()

@@ -22,8 +22,6 @@ public class EnemyController : MonoBehaviour
     private Damageable _damageable;
     private TurnManager _turnManager;
 
-    private bool _chasingPlayer = false;
-
     private void Awake()
     {
         TryGetComponent(out _walker);
@@ -42,7 +40,7 @@ public class EnemyController : MonoBehaviour
     private void Battle(float distToPlayer)
     {
         _turnManager.AddToQueue(_actorController);
-        if (Mathf.Abs(distToPlayer - attackDistance) > attackDistance)
+        if (Mathf.Abs(distToPlayer - attackDistance) > attackDistance + singleWalkLength)
         {
             var dirToPlayer = (PlayerGameObject.transform.position - transform.position).normalized;
             _actorController.selectedDestination = transform.position + dirToPlayer * singleWalkLength;
@@ -59,7 +57,10 @@ public class EnemyController : MonoBehaviour
 
     private void ExitBattle()
     {
-        _turnManager.RemoveFromQueue(_actorController);
+        if (_turnManager.IsInQueueList(_actorController))
+        {
+            _turnManager.RemoveFromQueue(_actorController);
+        }
     }
 
     private IEnumerator CheckPlayerPosition()
@@ -68,6 +69,7 @@ public class EnemyController : MonoBehaviour
         {
             if (_damageable.IsDead)
             {
+                ExitBattle();
                 yield break;
             }
 
@@ -76,11 +78,12 @@ public class EnemyController : MonoBehaviour
                 var playerPos = PlayerGameObject.transform.position;
 
                 var distance = Vector3.Distance(transform.position, playerPos);
-                if (distance <= distToNoticePlayer)
+                if (distance < distToNoticePlayer ||
+                    distance < distToForgetPlayer && _turnManager.IsInQueueList(_actorController))
                 {
                     Battle(distance);
                 }
-                else if (distance >= distToForgetPlayer)
+                else
                 {
                     ExitBattle();
                 }
