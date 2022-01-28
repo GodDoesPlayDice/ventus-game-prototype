@@ -12,38 +12,34 @@ public class TurnManager : MonoBehaviour
     
     private Queue<ActorController> _actorsQueue;
 
-    private void Awake()
-    {
-        _actorsQueue = new Queue<ActorController>();
-    }
-
     private void Start()
     {
+        _actorsQueue = new Queue<ActorController>();
         PlayerActor = GameObject.Find("Player").GetComponent<ActorController>();
         AddLast(PlayerActor);
         CurrentActor = PlayerActor;
     }
 
-    private void OnActionEnded(ActorController actor)
+    private void NextTurn()
     {
         if (_actorsQueue.Count <= 1)
         {
             CurrentActor = PlayerActor;
             return;
         }
-        RemoveFirst(actor);
+        RemoveFirst();
         
         // check if current actor is dead
         var currentActor = _actorsQueue.Peek();
         if (currentActor.exitQueueOnNextTurn)
         {
-            OnActionEnded(actor);
+            NextTurn();
         }
         else
         {
             // perform the action of the new first-in-line actor
             CurrentActor = currentActor;
-            AddLast(actor);
+            AddLast(currentActor);
         }
     }
 
@@ -55,15 +51,14 @@ public class TurnManager : MonoBehaviour
         }
         Debug.Log($"actor added to queue {actor.name}");
         _actorsQueue.Enqueue(actor);
-        actor.onActionEnded.AddListener(OnActionEnded);
+        actor.onActionEnded.AddListener(NextTurn);
         return true;
     }
 
-    public void RemoveFirst(ActorController actor)
+    private void RemoveFirst()
     {
-        Debug.Log($"actor removed from queue {actor.name}");
         _actorsQueue.Dequeue();
-        actor.onActionEnded.RemoveListener(OnActionEnded);
+        CurrentActor.onActionEnded.RemoveListener(NextTurn);
     }
 
     public void EnterCombatMode()

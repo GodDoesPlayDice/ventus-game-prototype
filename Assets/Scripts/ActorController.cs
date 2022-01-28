@@ -22,7 +22,7 @@ public class ActorController : MonoBehaviour
     public Vector3 selectedDestination;
     public Damageable selectedVictim;
 
-    public UnityEvent<ActorController> onActionEnded;
+    public UnityEvent onActionEnded;
     [HideInInspector] public bool exitQueueOnNextTurn = false;
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class ActorController : MonoBehaviour
 
     private void Start()
     {
-        onActionEnded ??= new UnityEvent<ActorController>();
+        onActionEnded ??= new UnityEvent();
     }
     
 
@@ -74,7 +74,7 @@ public class ActorController : MonoBehaviour
             else
             {
                 actorState = ActorState.Idle;
-                onActionEnded.Invoke(this);
+                onActionEnded.Invoke();
                 yield break;
             }
         }
@@ -88,7 +88,7 @@ public class ActorController : MonoBehaviour
             if (Time.time - _lastAttackTime >= attackDuration)
             {
                 actorState = ActorState.Idle;
-                onActionEnded.Invoke(this);
+                onActionEnded.Invoke();
                 yield break;
             }
             else
