@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class Damageable : MonoBehaviour
 
     public bool IsDead { get; private set; } = false;
 
+    public UnityEvent<float> onCurrentHPChange;
     private void Start()
     {
+        onCurrentHPChange ??= new UnityEvent<float>();
         currentHealth = maxHealth;
+        onCurrentHPChange.Invoke(currentHealth);
     }
 
     public void TakeDamage(float damage)
@@ -22,6 +26,10 @@ public class Damageable : MonoBehaviour
             Die();
         }
 
+        if (Math.Abs(currentHealth - newHealth) > 0.01f)
+        {
+            onCurrentHPChange.Invoke(newHealth);
+        }
         currentHealth = newHealth;
     }
 

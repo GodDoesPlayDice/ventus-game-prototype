@@ -43,7 +43,8 @@ public class EnemyController : MonoBehaviour
         if (Mathf.Abs(distToPlayer - attackDistance) > attackDistance + singleWalkLength)
         {
             var dirToPlayer = (PlayerGameObject.transform.position - transform.position).normalized;
-            _actorController.selectedDestination = transform.position + dirToPlayer * singleWalkLength;
+            Vector3 randomVector = new(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1), 0);
+            _actorController.selectedDestination = transform.position + (dirToPlayer * singleWalkLength) + randomVector;
             _actorController.selectedAction = ActorActions.Move;
             _actorController.Act();
         }

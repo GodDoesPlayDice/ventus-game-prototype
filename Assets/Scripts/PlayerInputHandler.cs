@@ -52,7 +52,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void HandleMouseClick()
     {
         var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-        var objectTag = hit.collider.gameObject.tag;
+        var objectTag = hit.collider?.gameObject?.tag;
         switch (objectTag)
         {
             case "Ground":
@@ -69,7 +69,8 @@ public class PlayerInputHandler : MonoBehaviour
                     _actorController.selectedAction = ActorActions.Attack;
                     _actorController.Act();
                 }
-
+                break;
+            default:
                 break;
         }
     }

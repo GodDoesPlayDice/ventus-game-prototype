@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,6 +69,42 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -78,7 +114,391 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 32x32_bonfire_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 64
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -18}
+        - {x: 9, y: -32}
+        - {x: 5, y: -36}
+        - {x: 5, y: -28}
+        - {x: -8, y: 4}
+        - {x: -26, y: -5}
+        - {x: -20, y: -42}
+        - {x: 14, y: -39}
+        - {x: 26, y: -40}
+        - {x: 30, y: -15}
+        - {x: 20, y: -7}
+      - - {x: 1, y: -12}
+        - {x: -3, y: -16}
+        - {x: -3, y: -21}
+        - {x: -1, y: -22}
+        - {x: 3, y: -22}
+        - {x: 7, y: -16}
+        - {x: 7, y: -14}
+        - {x: 5, y: -12}
+      - - {x: -1, y: -4}
+        - {x: -3, y: -5}
+        - {x: -3, y: -8}
+        - {x: -2, y: -10}
+        - {x: 1, y: -10}
+        - {x: 3, y: -9}
+        - {x: 3, y: -6}
+        - {x: 2, y: -4}
+      - - {x: 5, y: 0}
+        - {x: 3, y: -2}
+        - {x: 3, y: -4}
+        - {x: 9, y: -10}
+        - {x: 11, y: -10}
+        - {x: 13, y: -8}
+        - {x: 13, y: -4}
+        - {x: 9, y: 0}
+      - - {x: 9, y: 8}
+        - {x: 7, y: 6}
+        - {x: 7, y: 4}
+        - {x: 9, y: 2}
+        - {x: 11, y: 2}
+        - {x: 13, y: 4}
+        - {x: 13, y: 6}
+        - {x: 11, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a07f9ee73f5584678a6db7777a11ed29
+      internalID: 1158703798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_bonfire_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 64
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -18}
+        - {x: 9, y: -32}
+        - {x: 5, y: -36}
+        - {x: 5, y: -28}
+        - {x: -8, y: 4}
+        - {x: -26, y: -5}
+        - {x: -20, y: -42}
+        - {x: 14, y: -39}
+        - {x: 26, y: -40}
+        - {x: 30, y: -15}
+        - {x: 20, y: -7}
+      - - {x: 1, y: -12}
+        - {x: -3, y: -16}
+        - {x: -3, y: -21}
+        - {x: -1, y: -22}
+        - {x: 3, y: -22}
+        - {x: 7, y: -16}
+        - {x: 7, y: -14}
+        - {x: 5, y: -12}
+      - - {x: -1, y: -4}
+        - {x: -3, y: -5}
+        - {x: -3, y: -8}
+        - {x: -2, y: -10}
+        - {x: 1, y: -10}
+        - {x: 3, y: -9}
+        - {x: 3, y: -6}
+        - {x: 2, y: -4}
+      - - {x: 5, y: 0}
+        - {x: 3, y: -2}
+        - {x: 3, y: -4}
+        - {x: 9, y: -10}
+        - {x: 11, y: -10}
+        - {x: 13, y: -8}
+        - {x: 13, y: -4}
+        - {x: 9, y: 0}
+      - - {x: 9, y: 8}
+        - {x: 7, y: 6}
+        - {x: 7, y: 4}
+        - {x: 9, y: 2}
+        - {x: 11, y: 2}
+        - {x: 13, y: 4}
+        - {x: 13, y: 6}
+        - {x: 11, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04074e3430a7a4a2d8766be83fadfe1e
+      internalID: -1773594223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_bonfire_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 64
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -18}
+        - {x: 9, y: -32}
+        - {x: 5, y: -36}
+        - {x: 5, y: -28}
+        - {x: -8, y: 4}
+        - {x: -26, y: -5}
+        - {x: -20, y: -42}
+        - {x: 14, y: -39}
+        - {x: 26, y: -40}
+        - {x: 30, y: -15}
+        - {x: 20, y: -7}
+      - - {x: 1, y: -12}
+        - {x: -3, y: -16}
+        - {x: -3, y: -21}
+        - {x: -1, y: -22}
+        - {x: 3, y: -22}
+        - {x: 7, y: -16}
+        - {x: 7, y: -14}
+        - {x: 5, y: -12}
+      - - {x: -1, y: -4}
+        - {x: -3, y: -5}
+        - {x: -3, y: -8}
+        - {x: -2, y: -10}
+        - {x: 1, y: -10}
+        - {x: 3, y: -9}
+        - {x: 3, y: -6}
+        - {x: 2, y: -4}
+      - - {x: 5, y: 0}
+        - {x: 3, y: -2}
+        - {x: 3, y: -4}
+        - {x: 9, y: -10}
+        - {x: 11, y: -10}
+        - {x: 13, y: -8}
+        - {x: 13, y: -4}
+        - {x: 9, y: 0}
+      - - {x: 9, y: 8}
+        - {x: 7, y: 6}
+        - {x: 7, y: 4}
+        - {x: 9, y: 2}
+        - {x: 11, y: 2}
+        - {x: 13, y: 4}
+        - {x: 13, y: 6}
+        - {x: 11, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9897b4efb7a9d49d8a4fc06f2c721cf5
+      internalID: 1126224196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_bonfire_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 64
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -18}
+        - {x: 9, y: -32}
+        - {x: 5, y: -36}
+        - {x: 5, y: -28}
+        - {x: -8, y: 4}
+        - {x: -26, y: -5}
+        - {x: -20, y: -42}
+        - {x: 14, y: -39}
+        - {x: 26, y: -40}
+        - {x: 30, y: -15}
+        - {x: 20, y: -7}
+      - - {x: 1, y: -12}
+        - {x: -3, y: -16}
+        - {x: -3, y: -21}
+        - {x: -1, y: -22}
+        - {x: 3, y: -22}
+        - {x: 7, y: -16}
+        - {x: 7, y: -14}
+        - {x: 5, y: -12}
+      - - {x: -1, y: -4}
+        - {x: -3, y: -5}
+        - {x: -3, y: -8}
+        - {x: -2, y: -10}
+        - {x: 1, y: -10}
+        - {x: 3, y: -9}
+        - {x: 3, y: -6}
+        - {x: 2, y: -4}
+      - - {x: 5, y: 0}
+        - {x: 3, y: -2}
+        - {x: 3, y: -4}
+        - {x: 9, y: -10}
+        - {x: 11, y: -10}
+        - {x: 13, y: -8}
+        - {x: 13, y: -4}
+        - {x: 9, y: 0}
+      - - {x: 9, y: 8}
+        - {x: 7, y: 6}
+        - {x: 7, y: 4}
+        - {x: 9, y: 2}
+        - {x: 11, y: 2}
+        - {x: 13, y: 4}
+        - {x: 13, y: 6}
+        - {x: 11, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6c161f9d2fb4b8d85fab10dcc27cb6
+      internalID: -708000773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_bonfire_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -18}
+        - {x: 9, y: -32}
+        - {x: 5, y: -36}
+        - {x: 5, y: -28}
+        - {x: -8, y: 4}
+        - {x: -26, y: -5}
+        - {x: -20, y: -42}
+        - {x: 14, y: -39}
+        - {x: 26, y: -40}
+        - {x: 30, y: -15}
+        - {x: 20, y: -7}
+      - - {x: 1, y: -12}
+        - {x: -3, y: -16}
+        - {x: -3, y: -21}
+        - {x: -1, y: -22}
+        - {x: 3, y: -22}
+        - {x: 7, y: -16}
+        - {x: 7, y: -14}
+        - {x: 5, y: -12}
+      - - {x: -1, y: -4}
+        - {x: -3, y: -5}
+        - {x: -3, y: -8}
+        - {x: -2, y: -10}
+        - {x: 1, y: -10}
+        - {x: 3, y: -9}
+        - {x: 3, y: -6}
+        - {x: 2, y: -4}
+      - - {x: 5, y: 0}
+        - {x: 3, y: -2}
+        - {x: 3, y: -4}
+        - {x: 9, y: -10}
+        - {x: 11, y: -10}
+        - {x: 13, y: -8}
+        - {x: 13, y: -4}
+        - {x: 9, y: 0}
+      - - {x: 9, y: 8}
+        - {x: 7, y: 6}
+        - {x: 7, y: 4}
+        - {x: 9, y: 2}
+        - {x: 11, y: 2}
+        - {x: 13, y: 4}
+        - {x: 13, y: 6}
+        - {x: 11, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e030541fd7b66434ea67627df35582b6
+      internalID: -1969842094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_bonfire_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -18}
+        - {x: 9, y: -32}
+        - {x: 5, y: -36}
+        - {x: 5, y: -28}
+        - {x: -8, y: 4}
+        - {x: -26, y: -5}
+        - {x: -20, y: -42}
+        - {x: 14, y: -39}
+        - {x: 26, y: -40}
+        - {x: 30, y: -15}
+        - {x: 20, y: -7}
+      - - {x: 1, y: -12}
+        - {x: -3, y: -16}
+        - {x: -3, y: -21}
+        - {x: -1, y: -22}
+        - {x: 3, y: -22}
+        - {x: 7, y: -16}
+        - {x: 7, y: -14}
+        - {x: 5, y: -12}
+      - - {x: -1, y: -4}
+        - {x: -3, y: -5}
+        - {x: -3, y: -8}
+        - {x: -2, y: -10}
+        - {x: 1, y: -10}
+        - {x: 3, y: -9}
+        - {x: 3, y: -6}
+        - {x: 2, y: -4}
+      - - {x: 5, y: 0}
+        - {x: 3, y: -2}
+        - {x: 3, y: -4}
+        - {x: 9, y: -10}
+        - {x: 11, y: -10}
+        - {x: 13, y: -8}
+        - {x: 13, y: -4}
+        - {x: 9, y: 0}
+      - - {x: 9, y: 8}
+        - {x: 7, y: 6}
+        - {x: 7, y: 4}
+        - {x: 9, y: 2}
+        - {x: 11, y: 2}
+        - {x: 13, y: 4}
+        - {x: 13, y: 6}
+        - {x: 11, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f79ce7fd7ff48a7a431cff21804a8d
+      internalID: 2024955889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -89,10 +509,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      32x32_bonfire_2: 1126224196
+      32x32_bonfire_0: 1158703798
+      32x32_bonfire_1: -1773594223
+      32x32_bonfire_5: 2024955889
+      32x32_bonfire_3: -708000773
+      32x32_bonfire_4: -1969842094
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
