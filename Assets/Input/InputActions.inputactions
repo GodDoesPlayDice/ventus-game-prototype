@@ -42,15 +42,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PointerClick",
-                    "type": "Button",
-                    "id": "0e570d4d-6e1f-4c02-86bc-cd99e2bfaa41",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "9337f250-08be-4dab-8558-935fa45519bb",
@@ -289,17 +280,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "MousePosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3732b172-5053-47c6-bbd8-8e43e2a2d650",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "PointerClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

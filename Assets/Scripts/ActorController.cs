@@ -3,49 +3,33 @@ using System.Collections;
 using UnityEngine;
 using Enums;
 using Unity.VisualScripting;
+using UnityEngine.PlayerLoop;
 
 public class ActorController : MonoBehaviour
 {
-    public bool isActing = false;
     public ActorState actorState = ActorState.Idle;
     public Actor actorType = Actor.AI;
 
-    private Vector3 _destination;
-    public Vector3 Destination
-    {
-        get => _destination;
-        set
-        {
-            if (actorState == ActorState.Acting) return;
-            _destination = value;
-        }
-    }
-
-    [HideInInspector] public Animator animator;
-    private WalkerController _walkerController;
-    
-    private Coroutine _checkPositionCoroutine;
-
-
-    private static readonly int Attack = Animator.StringToHash("attack");
+    private Walker _walker;
+    private Attacker _attacker;
 
     private void Awake()
     {
-        TryGetComponent(out _walkerController);
+        TryGetComponent(out _walker);
+        TryGetComponent(out _attacker);
     }
 
-    public void Act(GameActions action)
+    public void Act(GameActions action, Vector3 v)
     {
         if (actorState == ActorState.Acting) return;
         actorState = ActorState.Acting;
         switch (action)
         {
             case GameActions.Move:
-                _walkerController.WalkTo(Destination);
-                StartCoroutine(CheckPositionCoroutine());
+                _walker.Walk(v);
+                StartCoroutine(CheckReachDestinationCoroutine());
                 break;
             case GameActions.Attack:
-                if (animator != null) animator.SetTrigger(Attack);
                 break;
             case GameActions.Interact:
                 break;
@@ -54,18 +38,19 @@ public class ActorController : MonoBehaviour
         }
     }
 
-    private IEnumerator CheckPositionCoroutine()
+    private IEnumerator CheckReachDestinationCoroutine()
     {
-        for (;;)
+        while (true)
         {
-            if (Vector3.Distance(transform.position, Destination) <= 0.05f)
+            if (!_walker.IsReachedDestination())
             {
-                Debug.Log("walk complete");
+                yield return new WaitForSeconds(0.1f);
+            }
+            else
+            {
                 actorState = ActorState.Idle;
                 yield break;
             }
-
-            yield return new WaitForSeconds(0.1f);
         }
     }
 }
