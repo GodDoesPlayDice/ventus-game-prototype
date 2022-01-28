@@ -4,6 +4,7 @@ using UnityEngine;
 using Enums;
 using Interfaces;
 using Unity.VisualScripting;
+using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 
 public class ActorController : MonoBehaviour
@@ -17,8 +18,11 @@ public class ActorController : MonoBehaviour
     private Attacker _attacker;
     private IActorAnimationManager _animationManager;
 
-    private Vector3 _currentDestination;
-    private Damageable _currentVictim;
+    public ActorActions selectedAction;
+    public Vector3 selectedDestination;
+    public Damageable selectedVictim;
+
+    public UnityEvent<ActorController> onActionEnded;
     private void Awake()
     {
         TryGetComponent(out _walker);
@@ -26,39 +30,35 @@ public class ActorController : MonoBehaviour
         TryGetComponent(out _animationManager);
     }
 
-    public void Act(Vector3 pos)
+    private void Start()
     {
-        _currentDestination = pos;
-        Act(ActorActions.Move);
+        onActionEnded ??= new UnityEvent<ActorController>();
     }
+    
 
-    public void Act(Damageable victim)
+    public void Act()
     {
-        _currentVictim = victim;
-        Act(ActorActions.Attack);
-    }
+        if (TurnManager.CurrentActor != this) return;
 
-    private void Act(ActorActions action)
-    {
         if (actorState == ActorState.Acting) return;
         actorState = ActorState.Acting;
-        switch (action)
+        switch (selectedAction)
         {
             case ActorActions.Move:
                 // Debug.Log($"walking to {_currentDestination}");
-                _walker.Walk(_currentDestination);
+                _walker.Walk(selectedDestination);
                 StartCoroutine(CheckReachDestinationRoutine());
                 break;
             case ActorActions.Attack:
                 // Debug.Log($"attacked {_currentVictim.name}");
                 _animationManager.AttackAnimation();
-                _attacker.Attack(_currentVictim);
+                _attacker.Attack(selectedVictim);
                 StartCoroutine(CountAfterAttackRoutine());
                 break;
             case ActorActions.Interact:
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(action), action, null);
+                throw new ArgumentOutOfRangeException(nameof(selectedAction), selectedAction, null);
         }
     }
 
@@ -73,6 +73,7 @@ public class ActorController : MonoBehaviour
             else
             {
                 actorState = ActorState.Idle;
+                onActionEnded.Invoke(this);
                 yield break;
             }
         }
@@ -86,6 +87,7 @@ public class ActorController : MonoBehaviour
             if (Time.time - _lastAttackTime >= attackDuration)
             {
                 actorState = ActorState.Idle;
+                onActionEnded.Invoke(this);
                 yield break;
             }
             else

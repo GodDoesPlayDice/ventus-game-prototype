@@ -9,7 +9,7 @@ public class PlayerInputHandler : MonoBehaviour
     private Camera _cam;
     private ActorController _actorController;
     public CursorController cursorController;
-    
+
     private void Awake()
     {
         TryGetComponent(out _actorController);
@@ -21,10 +21,12 @@ public class PlayerInputHandler : MonoBehaviour
     {
         HandleMouseClick();
     }
+
     public void OnPause(InputValue value)
     {
         HandleTogglePause();
     }
+
     public void OnMousePosition(InputValue value)
     {
         var pos = value.Get<Vector2>();
@@ -48,6 +50,7 @@ public class PlayerInputHandler : MonoBehaviour
             GameManager.SetGameState(GameState.Play);
         }
     }
+
     private void HandleMouseClick()
     {
         var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
@@ -55,15 +58,20 @@ public class PlayerInputHandler : MonoBehaviour
         switch (objectTag)
         {
             case "Ground":
-                _actorController.Act(mousePosition);
+                _actorController.selectedDestination = mousePosition;
+                _actorController.selectedAction = ActorActions.Move;
+                _actorController.Act();
                 break;
             case "Enemy":
                 hit.collider.gameObject.TryGetComponent(out Damageable victim);
                 if (victim != null)
                 {
                     // Debug.Log("trying to attack");
-                    _actorController.Act(victim);
+                    _actorController.selectedVictim = victim;
+                    _actorController.selectedAction = ActorActions.Attack;
+                    _actorController.Act();
                 }
+
                 break;
         }
     }
