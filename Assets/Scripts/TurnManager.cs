@@ -20,20 +20,24 @@ public class TurnManager : MonoBehaviour
     {
         _actorsQueueList = new List<ActorController>();
         onQueueChange ??= new UnityEvent<List<ActorController>>();
-    }
-
-    private void Start()
-    {
         PlayerActor = GameObject.Find("Player").GetComponent<ActorController>();
         AddToQueue(PlayerActor);
         CurrentActor = PlayerActor;
     }
+
+    // private void Start()
+    // {
+    //     PlayerActor = GameObject.Find("Player").GetComponent<ActorController>();
+    //     AddToQueue(PlayerActor);
+    //     CurrentActor = PlayerActor;
+    // }
 
     private void NextTurn()
     {
         if (_actorsQueueList.Count <= 1)
         {
             CurrentActor = PlayerActor;
+            onQueueChange.Invoke(_actorsQueueList);
             return;
         }
 
@@ -42,6 +46,7 @@ public class TurnManager : MonoBehaviour
 
         // check if current actor is dead
         CurrentActor = _actorsQueueList[0];
+        onQueueChange.Invoke(_actorsQueueList);
         // Debug.Log($"current actor {CurrentActor}");
         // perform the action of the new first-in-line actor
     }
@@ -58,7 +63,7 @@ public class TurnManager : MonoBehaviour
             // Debug.Log($"actor added to queue {actor.name}");
             _actorsQueueList.Add(actor);
             actor.onActionEnded.AddListener(NextTurn);
-            onQueueChange.Invoke(_actorsQueueList);
+            // onQueueChange.Invoke(_actorsQueueList);
         }
         return result;
     }
@@ -66,7 +71,7 @@ public class TurnManager : MonoBehaviour
     public bool RemoveFromQueue(ActorController actor)
     {
         bool result = true;
-        if (_actorsQueueList.Contains(actor))
+        if (!_actorsQueueList.Contains(actor))
         {
             result = false;
         }
@@ -76,7 +81,7 @@ public class TurnManager : MonoBehaviour
             int index = _actorsQueueList.IndexOf(actor);
             _actorsQueueList.RemoveAt(index);
             actor.onActionEnded.RemoveListener(NextTurn);
-            onQueueChange.Invoke(_actorsQueueList);
+            // onQueueChange.Invoke(_actorsQueueList);
         }
         return result;
     }

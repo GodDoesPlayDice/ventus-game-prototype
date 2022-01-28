@@ -33,7 +33,8 @@ public class HudController : MonoBehaviour
     {
         if (currentTurnTMP != null)
         {
-            currentTurnTMP.text = $"Current turn: {queueList[0]}";
+            if (TurnManager.CurrentActor != null)
+                currentTurnTMP.text = $"Now acting: {TurnManager.CurrentActor.gameObject.name}";
         }
     }
 
