@@ -6,14 +6,14 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     public Vector3 mousePosition;
-    private Camera _cam;
+    public Camera camera;
     private ActorController _actorController;
     public CursorController cursorController;
 
     private void Awake()
     {
         TryGetComponent(out _actorController);
-        _cam = Camera.main;
+        //_cam = Camera.main;
         if (cursorController == null) cursorController = GameObject.FindObjectsOfType<CursorController>()[0];
     }
 
@@ -30,12 +30,10 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnMousePosition(InputValue value)
     {
         var pos = value.Get<Vector2>();
-        if (_cam != null)
-        {
-            var objectPos = _cam.ScreenToWorldPoint(pos);
-            mousePosition = objectPos;
-            cursorController.mousePosition = mousePosition;
-        }
+        
+        var objectPos = camera.ScreenToWorldPoint(pos);
+        mousePosition = objectPos;
+        cursorController.mousePosition = mousePosition;
     }
 
 

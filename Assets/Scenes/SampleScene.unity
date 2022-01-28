@@ -123653,7 +123653,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.8042453, y: 1}
+    m_SensorSize: {x: 1.740321, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -123807,6 +123807,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1396037903, guid: 7ff74f338e24540f5a2ee4f01e312732, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 417618211355460929, guid: 7ff74f338e24540f5a2ee4f01e312732, type: 3}
       propertyPath: m_Name
       value: Player
