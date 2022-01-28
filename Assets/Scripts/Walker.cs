@@ -40,7 +40,7 @@ public class Walker : MonoBehaviour
         {
             if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
-                if (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude == 0f)
+                if (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude <= 0.5f)
                 {
                     result = true;
                 }
