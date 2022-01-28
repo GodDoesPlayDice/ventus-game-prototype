@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Enums;
+using Interfaces;
 using Unity.VisualScripting;
 using UnityEngine.PlayerLoop;
 
@@ -14,6 +15,7 @@ public class ActorController : MonoBehaviour
 
     private Walker _walker;
     private Attacker _attacker;
+    private IActorAnimationManager _animationManager;
 
     private Vector3 _currentDestination;
     private Damageable _currentVictim;
@@ -21,6 +23,7 @@ public class ActorController : MonoBehaviour
     {
         TryGetComponent(out _walker);
         TryGetComponent(out _attacker);
+        TryGetComponent(out _animationManager);
     }
 
     public void Act(Vector3 pos)
@@ -48,8 +51,9 @@ public class ActorController : MonoBehaviour
                 break;
             case GameActions.Attack:
                 // Debug.Log($"attacked {_currentVictim.name}");
-                StartCoroutine(CountAfterAttackRoutine());
+                _animationManager.AttackAnimation();
                 _attacker.Attack(_currentVictim);
+                StartCoroutine(CountAfterAttackRoutine());
                 break;
             case GameActions.Interact:
                 break;

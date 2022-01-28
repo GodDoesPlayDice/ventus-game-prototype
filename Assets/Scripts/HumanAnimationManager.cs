@@ -1,10 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Interfaces;
 
-public class HumanAnimationManager : MonoBehaviour
+public class HumanAnimationManager : MonoBehaviour, IActorAnimationManager
 {
-    private static readonly int Walk = Animator.StringToHash("walk");
-    private static readonly int Up = Animator.StringToHash("up");
+    private static readonly int WalkBool = Animator.StringToHash("walk");
+    private static readonly int UpBool = Animator.StringToHash("up");
+    private static readonly int AttackTrigger = Animator.StringToHash("attack");
 
     private NavMeshAgent _navMeshAgent;
 
@@ -18,18 +21,28 @@ public class HumanAnimationManager : MonoBehaviour
 
     private void Update()
     {
+        MovementAnimation();
+    }
+
+    public void AttackAnimation()
+    {
+        animator.SetTrigger(AttackTrigger);
+    }
+
+    public void MovementAnimation()
+    {
         if (animator == null || _navMeshAgent == null || spriteRenderer == null) return;
 
         if (_navMeshAgent.velocity.magnitude >= 0.01f)
         {
-            animator.SetBool(Walk, true);
+            animator.SetBool(WalkBool, true);
             if (_navMeshAgent.velocity.y >= 0.2f)
             {
-                animator.SetBool(Up, true);
+                animator.SetBool(UpBool, true);
             }
             else if (_navMeshAgent.velocity.y <= -0.2f)
             {
-                animator.SetBool(Up, false);
+                animator.SetBool(UpBool, false);
             }
 
             if (_navMeshAgent.velocity.x >= 0.2f)
@@ -43,7 +56,7 @@ public class HumanAnimationManager : MonoBehaviour
         }
         else
         {
-            animator.SetBool(Walk, false);
+            animator.SetBool(WalkBool, false);
         }
     }
 }
