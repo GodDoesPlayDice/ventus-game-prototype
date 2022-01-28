@@ -23,6 +23,7 @@ public class ActorController : MonoBehaviour
     public Damageable selectedVictim;
 
     public UnityEvent<ActorController> onActionEnded;
+    [HideInInspector] public bool exitQueueOnNextTurn = false;
     private void Awake()
     {
         TryGetComponent(out _walker);

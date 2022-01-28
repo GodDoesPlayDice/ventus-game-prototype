@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
+using Enums;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Walker))]
@@ -9,19 +12,23 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public static GameObject PlayerGameObject { get; private set; }
-    [SerializeField] private static float _distToNoticePlayer;
-    [SerializeField] private static float _distToForgetPlayer;
+    [SerializeField] private float distToNoticePlayer;
+    [SerializeField] private float distToForgetPlayer;
+    [SerializeField] private float attackDistance;
 
     private Walker _walker;
     private ActorController _actorController;
     private Damageable _damageable;
+    private TurnManager _turnManager;
 
     private bool _chasingPlayer = false;
+
     private void Awake()
     {
         TryGetComponent(out _walker);
         TryGetComponent(out _damageable);
         TryGetComponent(out _actorController);
+        if (_turnManager == null) GameObject.FindObjectOfType<TurnManager>();
         // find player
         if (PlayerGameObject == null) PlayerGameObject = GameObject.Find("Player");
     }
@@ -29,6 +36,28 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CheckPlayerPosition());
+    }
+
+    private void Battle(float distToPlayer)
+    {
+        _turnManager.AddLast(_actorController);
+        if (distToPlayer > attackDistance)
+        {
+            _actorController.selectedDestination = PlayerGameObject.transform.position;
+            _actorController.selectedAction = ActorActions.Move;
+            _actorController.Act();
+        }
+        else
+        {
+            _actorController.selectedVictim = PlayerGameObject.GetComponent<Damageable>();
+            _actorController.selectedAction = ActorActions.Attack;
+            _actorController.Act();
+        }
+    }
+
+    private void ExitBattle()
+    {
+        _actorController.exitQueueOnNextTurn = true;
     }
 
     private IEnumerator CheckPlayerPosition()
@@ -39,23 +68,23 @@ public class EnemyController : MonoBehaviour
             {
                 yield break;
             }
+
             if (PlayerGameObject != null && _walker != null && _actorController != null)
             {
                 var playerPos = PlayerGameObject.transform.position;
-                
+
                 var distance = Vector3.Distance(transform.position, playerPos);
-                if (distance <= _distToNoticePlayer)
+                if (distance <= distToNoticePlayer)
                 {
-                    _chasingPlayer = true;
+                    Battle(distance);
                 }
-                else if (distance >= _distToForgetPlayer && _chasingPlayer)
+                else if (distance >= distToForgetPlayer && _chasingPlayer)
                 {
-                    _chasingPlayer = false;
-                    Debug.Log("Player lost for enemy", this);
+                    ExitBattle();
                 }
             }
+
             yield return new WaitForSeconds(0.1f);
         }
     }
-    
 }

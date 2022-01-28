@@ -9,15 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameState GameState { get; private set; } = GameState.Play;
 
-    public static UnityEvent<GameState> OnGameStateChange;
-
     public static void SetGameState(GameState newState)
     {
-        if (newState != GameState)
-        {
-            OnGameStateChange.Invoke(newState);
-        }
-
         switch (newState)
         {
             case GameState.Play:

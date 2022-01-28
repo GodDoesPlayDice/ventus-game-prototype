@@ -8,6 +8,7 @@ public class TurnManager : MonoBehaviour
 {
     public static GameModes CurrentGameMode;
     public static ActorController CurrentActor;
+    public static ActorController PlayerActor;
     
     private Queue<ActorController> _actorsQueue;
 
@@ -18,24 +19,23 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
-        var player = GameObject.Find("Player").GetComponent<ActorController>();
-        AddLast(player);
-        CurrentActor = player;
+        PlayerActor = GameObject.Find("Player").GetComponent<ActorController>();
+        AddLast(PlayerActor);
+        CurrentActor = PlayerActor;
     }
 
     private void OnActionEnded(ActorController actor)
     {
         if (_actorsQueue.Count <= 1)
         {
-            CurrentActor = actor;
+            CurrentActor = PlayerActor;
             return;
         }
         RemoveFirst(actor);
         
         // check if current actor is dead
         var currentActor = _actorsQueue.Peek();
-        currentActor.TryGetComponent(out Damageable damageable);
-        if (damageable == null || !damageable.IsDead)
+        if (currentActor.exitQueueOnNextTurn)
         {
             OnActionEnded(actor);
         }
@@ -53,13 +53,10 @@ public class TurnManager : MonoBehaviour
         {
             return false;
         }
-        else
-        {
-            Debug.Log($"actor added to queue {actor.name}");
-            _actorsQueue.Enqueue(actor);
-            actor.onActionEnded.AddListener(OnActionEnded);
-            return true;
-        }
+        Debug.Log($"actor added to queue {actor.name}");
+        _actorsQueue.Enqueue(actor);
+        actor.onActionEnded.AddListener(OnActionEnded);
+        return true;
     }
 
     public void RemoveFirst(ActorController actor)
