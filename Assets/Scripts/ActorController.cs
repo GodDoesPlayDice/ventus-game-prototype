@@ -8,28 +8,48 @@ using UnityEngine.PlayerLoop;
 public class ActorController : MonoBehaviour
 {
     public ActorState actorState = ActorState.Idle;
-    public Actor actorType = Actor.AI;
+    [SerializeField] private Actor actorType = Actor.AI;
+    [SerializeField] private float attackDuration = 1f;
+    private float _lastAttackTime;
 
     private Walker _walker;
     private Attacker _attacker;
 
+    private Vector3 _currentDestination;
+    private Damageable _currentVictim;
     private void Awake()
     {
         TryGetComponent(out _walker);
         TryGetComponent(out _attacker);
     }
 
-    public void Act(GameActions action, Vector3 v)
+    public void Act(Vector3 pos)
+    {
+        _currentDestination = pos;
+        Act(GameActions.Move);
+    }
+
+    public void Act(Damageable victim)
+    {
+        _currentVictim = victim;
+        Act(GameActions.Attack);
+    }
+
+    private void Act(GameActions action)
     {
         if (actorState == ActorState.Acting) return;
         actorState = ActorState.Acting;
         switch (action)
         {
             case GameActions.Move:
-                _walker.Walk(v);
-                StartCoroutine(CheckReachDestinationCoroutine());
+                // Debug.Log($"walking to {_currentDestination}");
+                _walker.Walk(_currentDestination);
+                StartCoroutine(CheckReachDestinationRoutine());
                 break;
             case GameActions.Attack:
+                // Debug.Log($"attacked {_currentVictim.name}");
+                StartCoroutine(CountAfterAttackRoutine());
+                _attacker.Attack(_currentVictim);
                 break;
             case GameActions.Interact:
                 break;
@@ -38,7 +58,7 @@ public class ActorController : MonoBehaviour
         }
     }
 
-    private IEnumerator CheckReachDestinationCoroutine()
+    private IEnumerator CheckReachDestinationRoutine()
     {
         while (true)
         {
@@ -50,6 +70,23 @@ public class ActorController : MonoBehaviour
             {
                 actorState = ActorState.Idle;
                 yield break;
+            }
+        }
+    }
+
+    private IEnumerator CountAfterAttackRoutine()
+    {
+        _lastAttackTime = Time.time;
+        for (;;)
+        {
+            if (Time.time - _lastAttackTime >= attackDuration)
+            {
+                actorState = ActorState.Idle;
+                yield break;
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.5f);
             }
         }
     }

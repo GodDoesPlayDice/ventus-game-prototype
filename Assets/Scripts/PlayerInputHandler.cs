@@ -52,10 +52,19 @@ public class PlayerInputHandler : MonoBehaviour
     {
         var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
         var objectTag = hit.collider.gameObject.tag;
-        if (objectTag == "Ground")
+        switch (objectTag)
         {
-            _actorController.Act(GameActions.Move, mousePosition);
-            return;
+            case "Ground":
+                _actorController.Act(mousePosition);
+                break;
+            case "Enemy":
+                hit.collider.gameObject.TryGetComponent(out Damageable victim);
+                if (victim != null)
+                {
+                    // Debug.Log("trying to attack");
+                    _actorController.Act(victim);
+                }
+                break;
         }
     }
 }
