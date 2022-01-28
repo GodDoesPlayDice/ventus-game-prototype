@@ -14,7 +14,8 @@ public class EnemyController : MonoBehaviour
     public static GameObject PlayerGameObject { get; private set; }
     [SerializeField] private float distToNoticePlayer;
     [SerializeField] private float distToForgetPlayer;
-    [SerializeField] private float attackDistance;
+    [SerializeField] private float attackDistance = 1;
+    [SerializeField] private float singleWalkLength = 0.5f;
 
     private Walker _walker;
     private ActorController _actorController;
@@ -28,7 +29,7 @@ public class EnemyController : MonoBehaviour
         TryGetComponent(out _walker);
         TryGetComponent(out _damageable);
         TryGetComponent(out _actorController);
-        if (_turnManager == null) GameObject.FindObjectOfType<TurnManager>();
+        if (_turnManager == null) _turnManager = GameObject.FindObjectOfType<TurnManager>();
         // find player
         if (PlayerGameObject == null) PlayerGameObject = GameObject.Find("Player");
     }
@@ -40,10 +41,11 @@ public class EnemyController : MonoBehaviour
 
     private void Battle(float distToPlayer)
     {
-        _turnManager.AddLast(_actorController);
-        if (distToPlayer > attackDistance)
+        _turnManager.AddToQueue(_actorController);
+        if (Mathf.Abs(distToPlayer - attackDistance) > attackDistance)
         {
-            _actorController.selectedDestination = PlayerGameObject.transform.position;
+            var dirToPlayer = (PlayerGameObject.transform.position - transform.position).normalized;
+            _actorController.selectedDestination = transform.position + dirToPlayer * singleWalkLength;
             _actorController.selectedAction = ActorActions.Move;
             _actorController.Act();
         }
@@ -57,7 +59,7 @@ public class EnemyController : MonoBehaviour
 
     private void ExitBattle()
     {
-        _actorController.exitQueueOnNextTurn = true;
+        _turnManager.RemoveFromQueue(_actorController);
     }
 
     private IEnumerator CheckPlayerPosition()
@@ -78,7 +80,7 @@ public class EnemyController : MonoBehaviour
                 {
                     Battle(distance);
                 }
-                else if (distance >= distToForgetPlayer && _chasingPlayer)
+                else if (distance >= distToForgetPlayer)
                 {
                     ExitBattle();
                 }

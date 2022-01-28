@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mousePosition: {x: 0, y: 0, z: 0}
+  camera: {fileID: 0}
   cursorController: {fileID: 6988433844431675544}
 --- !u!195 &7558425865309859388
 NavMeshAgent:
@@ -415,8 +416,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorState: 1
-  actorType: 1
+  actorType: 0
   attackDuration: 1
+  selectedAction: 0
+  selectedDestination: {x: 0, y: 0, z: 0}
+  selectedVictim: {fileID: 0}
+  onActionEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7205130213514560575
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Enums;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,63 +10,58 @@ public class TurnManager : MonoBehaviour
     public static GameModes CurrentGameMode;
     public static ActorController CurrentActor;
     public static ActorController PlayerActor;
-    
-    private Queue<ActorController> _actorsQueue;
+
+    private List<ActorController> _actorsQueueList;
 
     private void Start()
     {
-        _actorsQueue = new Queue<ActorController>();
+        _actorsQueueList = new List<ActorController>();
         PlayerActor = GameObject.Find("Player").GetComponent<ActorController>();
-        AddLast(PlayerActor);
+        AddToQueue(PlayerActor);
         CurrentActor = PlayerActor;
     }
 
     private void NextTurn()
     {
-        if (_actorsQueue.Count <= 1)
+        if (_actorsQueueList.Count <= 1)
         {
             CurrentActor = PlayerActor;
             return;
         }
-        RemoveFirst();
-        
+
+        _actorsQueueList.Add(_actorsQueueList[0]);
+        _actorsQueueList.RemoveAt(0);
+
         // check if current actor is dead
-        var currentActor = _actorsQueue.Peek();
-        if (currentActor.exitQueueOnNextTurn)
-        {
-            NextTurn();
-        }
-        else
-        {
-            // perform the action of the new first-in-line actor
-            CurrentActor = currentActor;
-            AddLast(currentActor);
-        }
+        CurrentActor = _actorsQueueList[0];
+        Debug.Log($"current actor {CurrentActor}");
+        // perform the action of the new first-in-line actor
     }
 
-    public bool AddLast(ActorController actor)
+    public bool AddToQueue(ActorController actor)
     {
-        if (_actorsQueue.Contains(actor))
+        if (_actorsQueueList.Contains(actor))
         {
             return false;
         }
+
         Debug.Log($"actor added to queue {actor.name}");
-        _actorsQueue.Enqueue(actor);
+        _actorsQueueList.Add(actor);
         actor.onActionEnded.AddListener(NextTurn);
         return true;
     }
 
-    private void RemoveFirst()
+    public bool RemoveFromQueue(ActorController actor)
     {
-        _actorsQueue.Dequeue();
-        CurrentActor.onActionEnded.RemoveListener(NextTurn);
-    }
+        if (!_actorsQueueList.Contains(actor))
+        {
+            return false;
+        }
 
-    public void EnterCombatMode()
-    {
-    }
-
-    public void ExitCombatMode()
-    {
+        Debug.Log($"actor removed from queue {actor.name}");
+        int index = _actorsQueueList.IndexOf(actor);
+        _actorsQueueList.RemoveAt(index);
+        actor.onActionEnded.RemoveListener(NextTurn);
+        return true;
     }
 }
