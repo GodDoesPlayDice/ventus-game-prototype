@@ -157,7 +157,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417618211355460929}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -389,9 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  maxStamina: 0
-  staminaRegenTime: 0
-  animator: {fileID: 0}
+  animatorManager: {fileID: 0}
 --- !u!114 &7205130213514560575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +419,7 @@ MonoBehaviour:
   mousePosition: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
   cursorController: {fileID: 6988433844431675544}
+  cameraList: []
 --- !u!114 &5761106104603790147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,7 +436,11 @@ MonoBehaviour:
   attackStaminaCost: 3
   distanceToAttack: 2
   maxStamina: 10
+  onCurrentStaminaChange:
+    m_PersistentCalls:
+      m_Calls: []
   _stamina: 0
+  attackDelay: 1
 --- !u!1 &6787380453455628326
 GameObject:
   m_ObjectHideFlags: 0
