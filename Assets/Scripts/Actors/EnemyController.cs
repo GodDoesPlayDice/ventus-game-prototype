@@ -48,12 +48,6 @@ namespace Actors
 
         }
 
-        private void OnGUI()
-        {
-            GUI.Label(new Rect(5, 400, 100, 25),
-                Vector3.Distance(transform.position, PlayerGameObject.transform.position).ToString());
-        }
-
         // Update is called once per frame
         void Update()
         {

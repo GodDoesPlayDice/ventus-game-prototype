@@ -28,6 +28,10 @@ public class PersonController : MonoBehaviour
     
     private Walker _walker;
     private Attacker _attacker;
+
+    
+    public float attackDelay = 1f;
+    private float _attackStartTime;
     //private IActorAnimationManager _animationManager;
 
     private void Awake()
@@ -132,7 +136,11 @@ public class PersonController : MonoBehaviour
     private ActionStatus Attack()
     {
         var status = ActionStatus.InProgress;
-        if (Vector3.Distance(transform.position, _action.target.transform.position) > distanceToAttack)
+        if (_attackStartTime + attackDelay > Time.time)
+        {
+            // Nothing, InProgress. Should listen animation instead?
+        }
+        else if (Vector3.Distance(transform.position, _action.target.transform.position) > distanceToAttack)
         {
             status = Move();
         }
@@ -146,6 +154,7 @@ public class PersonController : MonoBehaviour
                 _attacker.Attack(_action.target);
                 status = ActionStatus.Completed;
                 _stamina -= attackStaminaCost;
+                _attackStartTime = Time.time;
             }
             else
             {

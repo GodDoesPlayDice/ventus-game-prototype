@@ -1,17 +1,21 @@
+using System;
 using UnityEngine;
 
+[RequireComponent(typeof(HumanAnimationManager))]
 public class Attacker : MonoBehaviour
 {
     [SerializeField] private float damage;
-    [SerializeField] private float maxStamina;
-    [SerializeField] private float staminaRegenTime;
-    [HideInInspector] public Animator animator;
+    [HideInInspector] public HumanAnimationManager animatorManager;
 
-    private float _currentStamina;
+    private void Awake()
+    {
+        animatorManager = GetComponent<HumanAnimationManager>();
+    }
+
     private static readonly int AttackTrigger = Animator.StringToHash("attack");
     public void Attack(Damageable victim)
     {
-        if (animator != null) animator.SetTrigger(AttackTrigger);
+        animatorManager.AttackAnimation();
         victim.TakeDamage(damage);
     }
 }
