@@ -11,7 +11,7 @@ namespace UI
         public Slider healthBarSlider;
         public Slider staminaBarSlider;
 
-        public IActorController enemyController;
+        public EnemyController actorController;
         public PersonController personController;
         public Damageable damageable;
 
@@ -41,7 +41,7 @@ namespace UI
 
         private void OnBattleEnterExit(IActorController actor, bool entered)
         {
-            if (actor == enemyController && entered)
+            if ((EnemyController) actor == actorController && entered)
             {
                 staminaAndHpPart.SetActive(true);
             }
