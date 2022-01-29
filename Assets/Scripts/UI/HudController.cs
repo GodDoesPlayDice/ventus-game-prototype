@@ -16,6 +16,7 @@ namespace UI
         public Slider healthBarSlider;
         public Slider staminaBarSlider;
         public TextMeshProUGUI currentTurnTMP;
+        public GameObject currentTurnObject;
         public GameObject battleBeginsMessage;
 
         private void Start()
@@ -73,10 +74,12 @@ namespace UI
             if (isBattle)
             {
                 battleBeginsMessage.SetActive(true);
+                if (currentTurnObject != null) currentTurnObject.SetActive(true);
             }
             else
             {
                 battleBeginsMessage.SetActive(false);
+                if (currentTurnObject != null) currentTurnObject.SetActive(false);
             }
         }
 
