@@ -118,12 +118,12 @@ GameObject:
   - component: {fileID: 7576361800027588381}
   - component: {fileID: 291578533963328612}
   - component: {fileID: 5417016310624812631}
-  - component: {fileID: 695925249}
   - component: {fileID: 1436915343441555018}
-  - component: {fileID: 3084980588334498791}
   - component: {fileID: 790305600}
   - component: {fileID: 994148079}
   - component: {fileID: 994148080}
+  - component: {fileID: 7084317519111294941}
+  - component: {fileID: 1374719687639815102}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -219,22 +219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {x: 0, y: 0, z: 0}
---- !u!114 &695925249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576361800027588377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1a4271f8674a76b531bb1f6bceb1a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distToNoticePlayer: 5
-  distToForgetPlayer: 10
-  attackDistance: 1
-  singleWalkLength: 1
 --- !u!114 &1436915343441555018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,27 +234,6 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   onCurrentHPChange:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3084980588334498791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7576361800027588377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc0de1fee554828b3da87a4edc94eb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorState: 1
-  actorType: 1
-  attackDuration: 1
-  selectedAction: 0
-  selectedDestination: {x: 0, y: 0, z: 0}
-  selectedVictim: {fileID: 0}
-  onActionEnded:
     m_PersistentCalls:
       m_Calls: []
 --- !u!61 &790305600
@@ -329,3 +292,33 @@ MonoBehaviour:
   maxStamina: 0
   staminaRegenTime: 0
   animator: {fileID: 0}
+--- !u!114 &7084317519111294941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576361800027588377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786c88bc89f838b42a3c85602920f641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveStaminaCost: 0.2
+  attackStaminaCost: 3
+  distanceToAttack: 2
+  maxStamina: 10
+  _stamina: 0
+--- !u!114 &1374719687639815102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576361800027588377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a5a0ded50e1fb46b58a77c6dfc72d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awareDistance: 5

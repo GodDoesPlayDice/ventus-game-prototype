@@ -9,7 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(Walker))]
 [RequireComponent(typeof(Damageable))]
 [RequireComponent(typeof(ActorController))]
-public class EnemyController : MonoBehaviour
+public class EnemyControllerOld : MonoBehaviour
 {
     public static GameObject PlayerGameObject { get; private set; }
     [SerializeField] private float distToNoticePlayer;

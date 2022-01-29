@@ -13,7 +13,7 @@ public class PersonController : MonoBehaviour
     
     public float moveStaminaCost = 0.2f;
     public float attackStaminaCost = 3f;
-    public float distanceToAttack = 1f;
+    public float distanceToAttack = 2f;
     public float maxStamina = 10;
 
     //public float attackTime = 1f;
@@ -45,6 +45,7 @@ public class PersonController : MonoBehaviour
 
     public void SetAction(ActorAction action)
     {
+        Debug.Log("SetAction " + action);
         _action = action;
         
         // Clear delta distance

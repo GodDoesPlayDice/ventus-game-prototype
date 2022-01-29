@@ -32,6 +32,7 @@ public class Walker : MonoBehaviour
     public void Walk(Vector3 position)
     {
         if (_navMeshAgent == null) return;
+        _navMeshAgent.isStopped = false;
         _navMeshAgent.destination = position;
     }
 

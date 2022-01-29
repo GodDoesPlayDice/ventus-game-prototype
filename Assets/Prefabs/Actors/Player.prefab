@@ -117,13 +117,13 @@ GameObject:
   - component: {fileID: 417618211355460934}
   - component: {fileID: 417618211355460933}
   - component: {fileID: 417618211355460984}
-  - component: {fileID: 1396037903}
   - component: {fileID: 7558425865309859388}
   - component: {fileID: 2864872949450652687}
   - component: {fileID: 5253001020468771682}
   - component: {fileID: 1396037902}
-  - component: {fileID: 5115079313997913851}
   - component: {fileID: 7205130213514560575}
+  - component: {fileID: 8343610913277914550}
+  - component: {fileID: 5761106104603790147}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -324,21 +324,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1396037903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417618211355460929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4d5fb2415a4b81b3a30992fbefeedb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mousePosition: {x: 0, y: 0, z: 0}
-  camera: {fileID: 0}
-  cursorController: {fileID: 6988433844431675544}
 --- !u!195 &7558425865309859388
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -387,6 +372,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
+  onCurrentHPChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1396037902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,27 +392,6 @@ MonoBehaviour:
   maxStamina: 0
   staminaRegenTime: 0
   animator: {fileID: 0}
---- !u!114 &5115079313997913851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417618211355460929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc0de1fee554828b3da87a4edc94eb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorState: 1
-  actorType: 0
-  attackDuration: 1
-  selectedAction: 0
-  selectedDestination: {x: 0, y: 0, z: 0}
-  selectedVictim: {fileID: 0}
-  onActionEnded:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7205130213514560575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +406,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 250790722}
   spriteRenderer: {fileID: 417618211283661218}
+--- !u!114 &8343610913277914550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417618211355460929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3123b47e52746459e6c46433eae506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mousePosition: {x: 0, y: 0, z: 0}
+  camera: {fileID: 0}
+  cursorController: {fileID: 6988433844431675544}
+--- !u!114 &5761106104603790147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417618211355460929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786c88bc89f838b42a3c85602920f641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveStaminaCost: 0.2
+  attackStaminaCost: 3
+  distanceToAttack: 2
+  maxStamina: 10
+  _stamina: 0
 --- !u!1 &6787380453455628326
 GameObject:
   m_ObjectHideFlags: 0
