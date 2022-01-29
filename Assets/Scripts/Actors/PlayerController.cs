@@ -95,10 +95,9 @@ namespace Actors
                     _personController.SetAction(ActorAction.Move(mousePosition, succeed =>
                     {
                         Debug.Log("Player " + succeed);
-                        if (!succeed && _endTurnCallback != null)
+                        if (!succeed)
                         {
-                            _endTurnCallback(true);
-                            _canAct = false;
+                            EndTurn();
                         }
                     }));
                     break;
@@ -136,6 +135,13 @@ namespace Actors
                 _canAct = true;
             }
             _personController.SetIgnoreStamina(!inBattle);
+        }
+
+        public void EndTurn()
+        {
+            if (_endTurnCallback == null) return;
+            _endTurnCallback(true);
+            _canAct = false;
         }
     }
 }

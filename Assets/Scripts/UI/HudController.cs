@@ -11,6 +11,7 @@ namespace UI
         private BattleManager _battleManager;
         private GameObject _player;
         private Damageable _playerDamageable;
+        private PlayerController _playerController;
         private PersonController _playerPersonController;
 
         public Slider healthBarSlider;
@@ -18,6 +19,7 @@ namespace UI
         public TextMeshProUGUI currentTurnTMP;
         public GameObject currentTurnObject;
         public GameObject battleBeginsMessage;
+        public GameObject endTurnButton;
 
         private void Start()
         {
@@ -29,14 +31,18 @@ namespace UI
             }
 
             _player = GameObject.Find("Player");
+            if (_player != null)
+            {
+                _player.TryGetComponent(out _playerPersonController);
+                _player.TryGetComponent(out _playerDamageable);
+                _player.TryGetComponent(out _playerController);
+            }
 
-            if (_player != null) _playerDamageable = _player.GetComponent<Damageable>();
             if (_playerDamageable != null)
             {
                 _playerDamageable.onCurrentHPChange.AddListener(OnPlayerHPChange);
             }
 
-            if (_player != null) _player.TryGetComponent(out _playerPersonController);
             if (_playerPersonController != null)
             {
                 _playerPersonController.onCurrentStaminaChange.AddListener(OnPlayerStaminaChange);
@@ -49,6 +55,18 @@ namespace UI
             {
                 var actor = (MonoBehaviour) currentActor;
                 currentTurnTMP.text = $"Now acting: {actor.name}";
+            }
+
+            if (endTurnButton != null)
+            {
+                if ((PlayerController) currentActor == _playerController)
+                {
+                    endTurnButton.SetActive(true);
+                }
+                else
+                {
+                    endTurnButton.SetActive(false);
+                }
             }
         }
 
@@ -80,6 +98,14 @@ namespace UI
             {
                 battleBeginsMessage.SetActive(false);
                 if (currentTurnObject != null) currentTurnObject.SetActive(false);
+            }
+        }
+
+        public void OnFinishMoveButton()
+        {
+            if (_playerController != null)
+            {
+                _playerController.EndTurn();
             }
         }
 
