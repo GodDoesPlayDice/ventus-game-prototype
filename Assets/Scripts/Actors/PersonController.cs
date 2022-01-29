@@ -60,7 +60,6 @@ public class PersonController : MonoBehaviour
 
     public void SetAction(ActorAction action)
     {
-        Debug.Log("SetAction " + action);
         _action = action;
         
         // Clear delta distance
@@ -72,6 +71,10 @@ public class PersonController : MonoBehaviour
         if (_action != null)
         {
             Act();
+        }
+        else
+        {
+            _walker.Stop();
         }
     }
 

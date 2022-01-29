@@ -59,7 +59,7 @@ namespace UI
 
             if (endTurnButton != null)
             {
-                if ((PlayerController) currentActor == _playerController)
+                if (currentActor == _playerController)
                 {
                     endTurnButton.SetActive(true);
                 }

@@ -47,7 +47,6 @@ namespace Actors
 
         public void OnFire(InputValue value)
         {
-            Debug.Log("Handle mouse " + _canAct);
             if (_canAct)
             {
                 HandleMouseClick();
@@ -94,7 +93,6 @@ namespace Actors
                     // _actorController.Act();
                     _personController.SetAction(ActorAction.Move(mousePosition, succeed =>
                     {
-                        Debug.Log("Player " + succeed);
                         if (!succeed)
                         {
                             EndTurn();
@@ -111,7 +109,6 @@ namespace Actors
                         // _actorController.Act();
                         _personController.SetAction(ActorAction.Attack(victim, succeed =>
                         {
-                            Debug.Log("Player attack " + succeed);
                         }));
                     }
                     break;
@@ -141,6 +138,7 @@ namespace Actors
         {
             if (_endTurnCallback == null) return;
             _endTurnCallback(true);
+            _personController.SetAction(null);
             _canAct = false;
         }
     }
