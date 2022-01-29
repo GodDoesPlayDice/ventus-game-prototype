@@ -9,12 +9,12 @@ public class Damageable : MonoBehaviour
 
     public bool IsDead { get; private set; } = false;
 
-    public UnityEvent<float> onCurrentHPChange;
+    public UnityEvent<float, float> onCurrentHPChange;
     private void Start()
     {
-        onCurrentHPChange ??= new UnityEvent<float>();
+        onCurrentHPChange ??= new UnityEvent<float, float>();
         currentHealth = maxHealth;
-        onCurrentHPChange.Invoke(currentHealth);
+        onCurrentHPChange.Invoke(currentHealth, maxHealth);
     }
 
     public void TakeDamage(float damage)
@@ -28,7 +28,7 @@ public class Damageable : MonoBehaviour
 
         if (Math.Abs(currentHealth - newHealth) > 0.01f)
         {
-            onCurrentHPChange.Invoke(newHealth);
+            onCurrentHPChange.Invoke(newHealth, maxHealth);
         }
         currentHealth = newHealth;
     }
