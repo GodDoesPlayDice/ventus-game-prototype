@@ -749,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8fbdf7fb7d4065ae3c09d4ab935e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 60
   currentHealth: 0
   onCurrentHPChange:
     m_PersistentCalls:
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474a1e8bf69f46ab937722b39b6ec3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 10
   animatorManager: {fileID: 0}
 --- !u!114 &7084317519111294941
 MonoBehaviour:
@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   awareDistance: 10
+  forgetDistance: 15
 --- !u!1 &7787526787303269178
 GameObject:
   m_ObjectHideFlags: 0
