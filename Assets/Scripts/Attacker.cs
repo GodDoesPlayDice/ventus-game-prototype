@@ -15,7 +15,8 @@ public class Attacker : MonoBehaviour
     private static readonly int AttackTrigger = Animator.StringToHash("attack");
     public void Attack(Damageable victim)
     {
-        animatorManager.AttackAnimation();
+        Vector3 direction = (victim.transform.position - transform.position).normalized;
+        animatorManager.AttackAnimation(direction);
         victim.TakeDamage(damage);
     }
 }

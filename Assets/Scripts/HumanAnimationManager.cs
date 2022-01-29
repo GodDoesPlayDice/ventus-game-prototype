@@ -24,9 +24,31 @@ public class HumanAnimationManager : MonoBehaviour, IActorAnimationManager
         MovementAnimation();
     }
 
+    public void AttackAnimation(Vector3 direction)
+    {
+        UpAndFlip(direction);
+        animator.SetTrigger(AttackTrigger);
+    }
+
+    private static bool IsUp(Vector3 v)
+    {
+        return v.y >= 0f;
+    }
+
+    private static bool IsFlip(Vector3 v)
+    {
+        return v.x <= 0f;
+    }
+
+    private void UpAndFlip(Vector3 v)
+    {
+        animator.SetBool(UpBool, IsUp(v));
+        spriteRenderer.flipX = IsFlip(v);
+    }
+
     public void AttackAnimation()
     {
-        animator.SetTrigger(AttackTrigger);
+        throw new System.NotImplementedException();
     }
 
     public void MovementAnimation()
@@ -36,23 +58,7 @@ public class HumanAnimationManager : MonoBehaviour, IActorAnimationManager
         if (_navMeshAgent.velocity.magnitude >= 0.01f)
         {
             animator.SetBool(WalkBool, true);
-            if (_navMeshAgent.velocity.y >= 0.2f)
-            {
-                animator.SetBool(UpBool, true);
-            }
-            else if (_navMeshAgent.velocity.y <= -0.2f)
-            {
-                animator.SetBool(UpBool, false);
-            }
-
-            if (_navMeshAgent.velocity.x >= 0.2f)
-            {
-                spriteRenderer.flipX = false;
-            }
-            else if (_navMeshAgent.velocity.x <= -0.2f)
-            {
-                spriteRenderer.flipX = true;
-            }
+            UpAndFlip(_navMeshAgent.velocity);
         }
         else
         {
