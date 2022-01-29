@@ -95,13 +95,11 @@ public class PersonController : MonoBehaviour
         if (status == ActionStatus.Completed)
         {
             _action = null;
-            Debug.Log(status);
             tmpAction.completeCallback(true);
         }
         else if (status == ActionStatus.StaminaOut)
         {
             _action = null;
-            Debug.Log(status);
             tmpAction.completeCallback(false);
         }
     }

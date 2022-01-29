@@ -90,12 +90,10 @@ namespace Actors
                 if (success)
                 {
                     StartCoroutine(ContinueAct(endTurn));
-                    Debug.Log("Enemy success");
                 }
                 else
                 {
                     endTurn(true);
-                    Debug.Log("Enemy not_success");
                 }
             }));
         }
