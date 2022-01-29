@@ -12,6 +12,7 @@ namespace Actors
         private List<IActorController> _actors = new List<IActorController>();
         public PlayerController player;
         public UnityEvent<bool> onBattleStatusChange;
+        public UnityEvent<IActorController, bool> onBattleActorStatusChange;
 
         private void Start()
         {
@@ -23,6 +24,7 @@ namespace Actors
             if (_actors.Contains(actor)) return false;
             _actors.Add(actor);
             actor.SetInBattle(true);
+            onBattleActorStatusChange.Invoke(actor, true);
             if (mode == GameModes.Peace)
             {
                 mode = GameModes.Combat;
@@ -36,6 +38,7 @@ namespace Actors
             if (!_actors.Contains(actor)) return false; 
             _actors.RemoveAt(_actors.IndexOf(actor));
             actor.SetInBattle(false);
+            onBattleActorStatusChange.Invoke(actor, false);
             if (_actors.Count <= 1)
             {
                 mode = GameModes.Peace;
