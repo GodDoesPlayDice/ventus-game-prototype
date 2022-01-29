@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Enums;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Actors
 {
@@ -10,6 +11,7 @@ namespace Actors
         private GameModes mode = GameModes.Peace;
         private List<IActorController> _actors = new List<IActorController>();
         public PlayerController player;
+        public UnityEvent<bool> onBattleStatusChange;
 
         private void Start()
         {
@@ -44,6 +46,7 @@ namespace Actors
 
         private void StartBattle()
         {
+            onBattleStatusChange.Invoke(true);
             player.SetInBattle(true);
             NextTurn();
             Debug.Log("Battle");
@@ -51,6 +54,7 @@ namespace Actors
 
         private void StopBattle()
         {
+            onBattleStatusChange.Invoke(false);
             player.SetInBattle(false);
         }
 

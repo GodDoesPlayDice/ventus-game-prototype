@@ -1,7 +1,9 @@
 using Actions;
 using Enums;
 using Interfaces;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class PersonController : MonoBehaviour
@@ -15,6 +17,8 @@ public class PersonController : MonoBehaviour
     public float attackStaminaCost = 3f;
     public float distanceToAttack = 2f;
     public float maxStamina = 10;
+    
+    public UnityEvent<float, float> onCurrentStaminaChange;
 
     //public float attackTime = 1f;
     
@@ -32,10 +36,17 @@ public class PersonController : MonoBehaviour
         TryGetComponent(out _attacker);
         //TryGetComponent(out _animationManager);
     }
+    
+    private void Start()
+    {
+        onCurrentStaminaChange ??= new UnityEvent<float, float>();
+        ResetStamina();
+    }
 
     public void ResetStamina()
     {
         _stamina = maxStamina;
+        onCurrentStaminaChange.Invoke(_stamina, maxStamina);
     }
 
     public void SetIgnoreStamina(bool ignoreStamina)
@@ -69,6 +80,11 @@ public class PersonController : MonoBehaviour
         } else if (_action.type == ActionType.Attack)
         {
             status = Attack();
+        }
+
+        if (!_ignoreStamina)
+        {
+            onCurrentStaminaChange.Invoke(_stamina, maxStamina);
         }
 
         var tmpAction = _action;
