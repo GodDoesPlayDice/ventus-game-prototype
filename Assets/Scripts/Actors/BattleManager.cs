@@ -13,7 +13,8 @@ namespace Actors
         public PlayerController player;
         public UnityEvent<bool> onBattleStatusChange;
         public UnityEvent<IActorController, bool> onBattleActorStatusChange;
-
+        public UnityEvent<IActorController> onCurrentActorChange;
+        
         private void Start()
         {
             _actors.Add(player);
@@ -63,6 +64,7 @@ namespace Actors
 
         private void NextTurn()
         {
+            onCurrentActorChange.Invoke(_actors[0]);
             _actors[0].Act(succeed =>
             {
                 var tmp = _actors[0];
@@ -71,7 +73,6 @@ namespace Actors
                 {
                     _actors.Add(tmp);
                 }
-
                 NextTurn();
             });
         }

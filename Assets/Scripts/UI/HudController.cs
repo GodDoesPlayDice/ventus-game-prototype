@@ -1,80 +1,95 @@
-using System;
 using System.Collections.Generic;
-using System.Globalization;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.Assertions.Must;
-using Enums;
+using Actors;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class HudController : MonoBehaviour
+namespace UI
 {
-    private TurnManager _turnManager;
-    private Damageable _playerDamageable;
-
-    public Slider healthBarSlider;
-    public Slider staminaBarSlider;
-    public TextMeshProUGUI currentTurnTMP;
-    public GameObject battleBeginsMessage;
-
-    private void Start()
+    public class HudController : MonoBehaviour
     {
-        if (_turnManager == null) _turnManager = GameObject.FindObjectOfType<TurnManager>();
-        if (_turnManager != null)
+        private BattleManager _battleManager;
+        private GameObject _player;
+        private Damageable _playerDamageable;
+        private PersonController _playerPersonController;
+
+        public Slider healthBarSlider;
+        public Slider staminaBarSlider;
+        public TextMeshProUGUI currentTurnTMP;
+        public GameObject battleBeginsMessage;
+
+        private void Start()
         {
-            _turnManager.onQueueChange.AddListener(OnQueueChange);
+            if (_battleManager == null) _battleManager = GameObject.FindObjectOfType<BattleManager>();
+            if (_battleManager != null)
+            {
+                _battleManager.onBattleStatusChange.AddListener(OnBattleBegin);
+                _battleManager.onCurrentActorChange.AddListener(OnCurrentActorChange);
+            }
+
+            _player = GameObject.Find("Player");
+
+            if (_player != null) _playerDamageable = _player.GetComponent<Damageable>();
+            if (_playerDamageable != null)
+            {
+                _playerDamageable.onCurrentHPChange.AddListener(OnPlayerHPChange);
+            }
+
+            if (_player != null) _player.TryGetComponent(out _playerPersonController);
+            if (_playerPersonController != null)
+            {
+                _playerPersonController.onCurrentStaminaChange.AddListener(OnPlayerStaminaChange);
+            }
         }
 
-        if (_playerDamageable == null) _playerDamageable = GameObject.Find("Player").GetComponent<Damageable>();
-        if (_playerDamageable != null)
+        private void OnCurrentActorChange(IActorController currentActor)
         {
-            _playerDamageable.onCurrentHPChange.AddListener(OnPlayerHPChange);
+            if (currentTurnTMP != null)
+            {
+                var actor = (MonoBehaviour) currentActor;
+                currentTurnTMP.text = $"Now acting: {actor.name}";
+            }
         }
-    }
 
-    private void OnQueueChange(List<ActorController> queueList)
-    {
-        if (currentTurnTMP != null)
+        private void OnPlayerHPChange(float current, float max)
         {
-            if (TurnManager.CurrentActor != null)
-                currentTurnTMP.text = $"Now acting: {TurnManager.CurrentActor.gameObject.name}";
+            if (healthBarSlider != null)
+            {
+                healthBarSlider.value = current / max;
+            }
         }
-    }
 
-    private void OnPlayerHPChange(float newHp, float maxHp)
-    {
-        if (healthBarSlider != null)
+        private void OnPlayerStaminaChange(float current, float max)
         {
-            healthBarSlider.value = newHp / maxHp;
+            if (staminaBarSlider != null)
+            {
+                staminaBarSlider.value = current / max;
+            }
         }
-    }
-    
-    private void OnPlayerStaminaChange(float newStamina, float maxStamina)
-    {
-        if (staminaBarSlider != null)
-        {
-            staminaBarSlider.value = newStamina / newStamina;
-        }
-    }
 
-    private void OnBattleBegin()
-    {
-        if (battleBeginsMessage != null)
+        private void OnBattleBegin(bool isBattle)
         {
-            battleBeginsMessage.SetActive(true);
-        } 
-    }
-
-    private void OnPauseToggle(bool isPause)
-    {
-        if (isPause)
-        {
-            Debug.Log("Game paused");
+            if (battleBeginsMessage == null) return;
+            if (isBattle)
+            {
+                battleBeginsMessage.SetActive(true);
+            }
+            else
+            {
+                battleBeginsMessage.SetActive(false);
+            }
         }
-        else
+
+        private void OnPauseToggle(bool isPause)
         {
-            Debug.Log("Game playing");
+            if (isPause)
+            {
+                Debug.Log("Game paused");
+            }
+            else
+            {
+                Debug.Log("Game playing");
+            }
         }
     }
 }
