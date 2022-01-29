@@ -45,8 +45,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -123,8 +123,8 @@ TextureImporter:
         y: 0
         width: 32
         height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -159,8 +159,8 @@ TextureImporter:
         y: 0
         width: 32
         height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -195,8 +195,8 @@ TextureImporter:
         y: 0
         width: 32
         height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -231,30 +231,15 @@ TextureImporter:
         y: 0
         width: 32
         height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 2, y: 3}
-        - {x: -16, y: 2}
-        - {x: -16, y: -44}
-        - {x: -15, y: -48}
-        - {x: 15, y: -48}
-        - {x: 16, y: -47}
-        - {x: 15, y: 1}
-        - {x: 15, y: 3}
-      - - {x: -3, y: -11}
-        - {x: 2, y: -15}
-        - {x: 7, y: -15}
-        - {x: 7, y: -8}
-        - {x: 6, y: -5}
-        - {x: -2, y: -5}
-        - {x: -3, y: -7}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a35aa63aa684e4e53a8ff2a98907f027
-      internalID: 56549959
+      spriteID: f390adde40de9400e84b2f08a7f964f9
+      internalID: 1977015931
       vertices: []
       indices: 
       edges: []
@@ -267,30 +252,15 @@ TextureImporter:
         y: 0
         width: 32
         height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 2, y: 3}
-        - {x: -16, y: 2}
-        - {x: -16, y: -44}
-        - {x: -15, y: -48}
-        - {x: 15, y: -48}
-        - {x: 16, y: -47}
-        - {x: 15, y: 1}
-        - {x: 15, y: 3}
-      - - {x: -3, y: -11}
-        - {x: 2, y: -15}
-        - {x: 7, y: -15}
-        - {x: 7, y: -8}
-        - {x: 6, y: -5}
-        - {x: -2, y: -5}
-        - {x: -3, y: -7}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baaa3ffc9bdef44cda6dd2cd5dd99010
-      internalID: 1312944834
+      spriteID: 9689a4a29d601423eacfdc2858aeb313
+      internalID: -1308013297
       vertices: []
       indices: 
       edges: []
@@ -303,30 +273,15 @@ TextureImporter:
         y: 0
         width: 32
         height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 2, y: 3}
-        - {x: -16, y: 2}
-        - {x: -16, y: -44}
-        - {x: -15, y: -48}
-        - {x: 15, y: -48}
-        - {x: 16, y: -47}
-        - {x: 15, y: 1}
-        - {x: 15, y: 3}
-      - - {x: -3, y: -11}
-        - {x: 2, y: -15}
-        - {x: 7, y: -15}
-        - {x: 7, y: -8}
-        - {x: 6, y: -5}
-        - {x: -2, y: -5}
-        - {x: -3, y: -7}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ad1294305a84439b9565f2070f320de
-      internalID: -1021091549
+      spriteID: cb6ed91960bec486e935ac0d19ce8f1a
+      internalID: 1616886909
       vertices: []
       indices: 
       edges: []
@@ -344,10 +299,10 @@ TextureImporter:
     nameFileIdTable:
       32x32_trash_can_fire_0: 985534728
       32x32_trash_can_fire_2: -595630304
-      32x32_trash_can_fire_3: 56549959
+      32x32_trash_can_fire_3: 1977015931
       32x32_trash_can_fire_1: 420849994
-      32x32_trash_can_fire_4: 1312944834
-      32x32_trash_can_fire_5: -1021091549
+      32x32_trash_can_fire_4: -1308013297
+      32x32_trash_can_fire_5: 1616886909
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 1

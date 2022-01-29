@@ -16,9 +16,9 @@ MonoBehaviour:
   - {fileID: 985534728, guid: 752904e6c61064427b6c1059f997f017, type: 3}
   - {fileID: 420849994, guid: 752904e6c61064427b6c1059f997f017, type: 3}
   - {fileID: -595630304, guid: 752904e6c61064427b6c1059f997f017, type: 3}
-  - {fileID: 56549959, guid: 752904e6c61064427b6c1059f997f017, type: 3}
-  - {fileID: 1312944834, guid: 752904e6c61064427b6c1059f997f017, type: 3}
-  - {fileID: -1021091549, guid: 752904e6c61064427b6c1059f997f017, type: 3}
+  - {fileID: 1977015931, guid: 752904e6c61064427b6c1059f997f017, type: 3}
+  - {fileID: -1308013297, guid: 752904e6c61064427b6c1059f997f017, type: 3}
+  - {fileID: 1616886909, guid: 752904e6c61064427b6c1059f997f017, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0
