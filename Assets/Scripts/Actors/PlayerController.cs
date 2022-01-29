@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using Actions;
 using Enums;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Actors
@@ -82,7 +83,8 @@ namespace Actors
         
         private void HandleMouseClick()
         {
-            
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
             var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
             var objectTag = hit.collider?.gameObject?.tag;
             switch (objectTag)

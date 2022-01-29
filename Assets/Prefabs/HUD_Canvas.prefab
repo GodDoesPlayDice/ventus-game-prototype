@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3658223311501390265}
   m_Layer: 5
   m_Name: LowerPartHUD
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 6284171636832849248}
   m_Layer: 5
   m_Name: EndMoveButton
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -996,7 +996,7 @@ GameObject:
   - component: {fileID: 7674221246457003034}
   m_Layer: 5
   m_Name: CurrentTurn
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 7844855517857311740}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1412,7 +1412,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 5402415184367561374}
   m_FillRect: {fileID: 8906783719802611724}
   m_HandleRect: {fileID: 0}
@@ -1438,7 +1438,7 @@ GameObject:
   - component: {fileID: 3384324829798038257}
   m_Layer: 5
   m_Name: BattleMessage
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1981,7 +1981,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4367017226133887952}
   m_FillRect: {fileID: 8498362868628986857}
   m_HandleRect: {fileID: 0}
