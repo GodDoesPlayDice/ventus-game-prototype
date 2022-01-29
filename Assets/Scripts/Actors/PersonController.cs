@@ -122,6 +122,7 @@ public class PersonController : MonoBehaviour
         }
         else
         {
+            _walker.Stop();
             status = ActionStatus.StaminaOut;
         }
         

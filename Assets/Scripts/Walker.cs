@@ -38,6 +38,7 @@ public class Walker : MonoBehaviour
 
     public void Stop()
     {
+        _navMeshAgent.destination = transform.position;
         _navMeshAgent.isStopped = true;
     }
 
