@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Actions;
 using Enums;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace Actors
         public Vector3 mousePosition;
         public Camera camera;
         public CursorController cursorController;
+
+        public List<GameObject> cameraList;
         
         private PersonController _personController;
 
@@ -25,6 +28,21 @@ namespace Actors
             TryGetComponent(out _personController);
             //_cam = Camera.main;
             if (cursorController == null) cursorController = GameObject.FindObjectsOfType<CursorController>()[0];
+        }
+
+        public void OnSwitchView(InputValue value)
+        {
+            if (cameraList.Count != 2) return;
+            if (cameraList[0].activeSelf)
+            {
+                cameraList[0].SetActive(false);
+                cameraList[1].SetActive(true);
+            }
+            else
+            {
+                cameraList[0].SetActive(true);
+                cameraList[1].SetActive(false);
+            }
         }
 
         public void OnFire(InputValue value)
