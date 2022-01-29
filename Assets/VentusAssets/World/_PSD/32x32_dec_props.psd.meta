@@ -4855,7 +4855,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -12, y: 16}
+        - {x: -14, y: 14}
+        - {x: -14, y: -2}
+        - {x: -10, y: -6}
+        - {x: 10, y: -6}
+        - {x: 14, y: -2}
+        - {x: 14, y: 14}
+        - {x: 12, y: 16}
       tessellationDetail: 0
       bones: []
       spriteID: a255d0b27147d42ca841ca9c74f02759
@@ -4897,7 +4905,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -16, y: -13}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -13}
       tessellationDetail: 0
       bones: []
       spriteID: d34cea111fcd14d4aa299e44a1aa0923
@@ -4939,7 +4951,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -12, y: 16}
+        - {x: -14, y: 14}
+        - {x: -14, y: -2}
+        - {x: -10, y: -6}
+        - {x: 10, y: -6}
+        - {x: 14, y: -2}
+        - {x: 14, y: 14}
+        - {x: 12, y: 16}
       tessellationDetail: 0
       bones: []
       spriteID: 9cd3dae4a278540a9890e2e3569ad242
@@ -4960,7 +4980,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -12, y: 16}
+        - {x: -14, y: 14}
+        - {x: -14, y: -2}
+        - {x: -10, y: -6}
+        - {x: 10, y: -6}
+        - {x: 14, y: -2}
+        - {x: 14, y: 14}
+        - {x: 12, y: 16}
       tessellationDetail: 0
       bones: []
       spriteID: 4571ff4cce01740b79f2139bfdd376b6
@@ -24678,20 +24706,20 @@ TextureImporter:
       32x32_dec_props_370: 776533148
       32x32_dec_props_862: -1099621832
       32x32_dec_props_1147: 1357765898
-      32x32_dec_props_232: 1253416493
       32x32_dec_props_630: -364943389
+      32x32_dec_props_232: 1253416493
+      32x32_dec_props_1078: 175093956
       32x32_dec_props_765: -428588677
       32x32_dec_props_569: 1092313865
-      32x32_dec_props_1078: 175093956
       32x32_dec_props_645: -2048769491
-      32x32_dec_props_986: -717453276
+      32x32_dec_props_1133: 1788127180
       32x32_dec_props_398: 271149384
       32x32_dec_props_1008: -453245116
       32x32_dec_props_36: 145437741
       32x32_dec_props_62: 196321183
-      32x32_dec_props_323: 905090511
-      32x32_dec_props_1133: 1788127180
       32x32_dec_props_508: -1802690502
+      32x32_dec_props_323: 905090511
+      32x32_dec_props_986: -717453276
       32x32_dec_props_697: 1587950403
       32x32_dec_props_127: -272943428
       32x32_dec_props_202: 1597360605
@@ -24828,10 +24856,10 @@ TextureImporter:
       32x32_dec_props_579: 2130461068
       32x32_dec_props_185: 2072581310
       32x32_dec_props_201: 692467617
-      32x32_dec_props_557: 310561097
-      32x32_dec_props_717: -1048930298
-      32x32_dec_props_536: -497610939
       32x32_dec_props_825: -1259115406
+      32x32_dec_props_717: -1048930298
+      32x32_dec_props_557: 310561097
+      32x32_dec_props_536: -497610939
       32x32_dec_props_832: 574044940
       32x32_dec_props_664: 86441528
       32x32_dec_props_915: -1003645234
@@ -24859,11 +24887,11 @@ TextureImporter:
       32x32_dec_props_573: 785471894
       32x32_dec_props_1018: -1107780811
       32x32_dec_props_55: -891141256
-      32x32_dec_props_395: 2140084790
+      32x32_dec_props_1116: 846550878
       32x32_dec_props_122: -1506254413
       32x32_dec_props_755: 1436313686
       32x32_dec_props_46: 2116626394
-      32x32_dec_props_1116: 846550878
+      32x32_dec_props_395: 2140084790
       32x32_dec_props_1022: -285015555
       32x32_dec_props_190: 1518650196
       32x32_dec_props_245: 662127459
@@ -24879,11 +24907,11 @@ TextureImporter:
       32x32_dec_props_1054: 1397870956
       32x32_dec_props_1045: 245915155
       32x32_dec_props_582: 1408529346
-      32x32_dec_props_768: 1741784724
-      32x32_dec_props_1020: -633607815
       32x32_dec_props_883: 1949275300
-      32x32_dec_props_322: 802400062
+      32x32_dec_props_1020: -633607815
       32x32_dec_props_1132: -1869710323
+      32x32_dec_props_768: 1741784724
+      32x32_dec_props_322: 802400062
       32x32_dec_props_130: 592567856
       32x32_dec_props_531: 152616442
       32x32_dec_props_728: -1936968011
@@ -25107,6 +25135,7 @@ TextureImporter:
       32x32_dec_props_525: 1901631183
       32x32_dec_props_238: -369446301
       32x32_dec_props_146: -1861126271
+      32x32_dec_props_830: -1977788973
       32x32_dec_props_387: -1288661170
       32x32_dec_props_256: 682171016
       32x32_dec_props_1131: -75721598
@@ -25118,17 +25147,16 @@ TextureImporter:
       32x32_dec_props_795: -730878422
       32x32_dec_props_872: -1169542560
       32x32_dec_props_17: 549684131
-      32x32_dec_props_386: 1988942594
-      32x32_dec_props_830: -1977788973
       32x32_dec_props_955: -110971797
+      32x32_dec_props_386: 1988942594
       32x32_dec_props_166: -1896298838
       32x32_dec_props_52: -1484619841
       32x32_dec_props_945: -705578798
-      32x32_dec_props_1044: -427044865
       32x32_dec_props_1112: 1802375979
-      32x32_dec_props_1128: 576317408
+      32x32_dec_props_1044: -427044865
       32x32_dec_props_362: 615142054
       32x32_dec_props_84: -1617232078
+      32x32_dec_props_1128: 576317408
       32x32_dec_props_404: -1272663843
       32x32_dec_props_259: 785583820
       32x32_dec_props_953: -829470940
@@ -25145,11 +25173,11 @@ TextureImporter:
       32x32_dec_props_260: 1762503823
       32x32_dec_props_1069: -813967570
       32x32_dec_props_24: -2090640236
-      32x32_dec_props_191: 1339111781
-      32x32_dec_props_942: 824699523
-      32x32_dec_props_511: -697800499
-      32x32_dec_props_54: -1553094784
       32x32_dec_props_990: -1284441554
+      32x32_dec_props_191: 1339111781
+      32x32_dec_props_511: -697800499
+      32x32_dec_props_942: 824699523
+      32x32_dec_props_54: -1553094784
       32x32_dec_props_1047: -524013343
       32x32_dec_props_470: 1204828020
       32x32_dec_props_840: 1597131808
@@ -25157,21 +25185,21 @@ TextureImporter:
       32x32_dec_props_403: -1097617608
       32x32_dec_props_235: 132566423
       32x32_dec_props_56: -930135785
+      32x32_dec_props_1011: 1398009579
       32x32_dec_props_269: 736815275
       32x32_dec_props_459: 1132970878
       32x32_dec_props_586: 1556281281
-      32x32_dec_props_1011: 1398009579
       32x32_dec_props_551: 494878464
       32x32_dec_props_1123: -231293164
       32x32_dec_props_353: 1861147938
-      32x32_dec_props_111: -1609290009
       32x32_dec_props_526: -1396985624
+      32x32_dec_props_111: -1609290009
       32x32_dec_props_859: 2114228899
       32x32_dec_props_616: 1946771012
       32x32_dec_props_70: 49091508
       32x32_dec_props_117: 485909809
-      32x32_dec_props_562: -432265296
       32x32_dec_props_1075: -1527172692
+      32x32_dec_props_562: -432265296
       32x32_dec_props_1038: 1218312448
       32x32_dec_props_1004: -1371927943
       32x32_dec_props_1146: -366208274
@@ -25197,8 +25225,8 @@ TextureImporter:
       32x32_dec_props_602: 140685764
       32x32_dec_props_492: 1976281032
       32x32_dec_props_435: -1580436906
-      32x32_dec_props_912: 76552748
       32x32_dec_props_1009: -1477161520
+      32x32_dec_props_912: 76552748
       32x32_dec_props_132: 625626174
       32x32_dec_props_934: -1301064678
       32x32_dec_props_1115: -125377842
