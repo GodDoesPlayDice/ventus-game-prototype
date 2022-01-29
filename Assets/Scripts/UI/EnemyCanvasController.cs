@@ -41,13 +41,9 @@ namespace UI
 
         private void OnBattleEnterExit(IActorController actor, bool entered)
         {
-            if ((EnemyController) actor == actorController && entered)
+            if ((EnemyController) actor == actorController)
             {
-                staminaAndHpPart.SetActive(true);
-            }
-            else
-            {
-                staminaAndHpPart.SetActive(false);
+                staminaAndHpPart.SetActive(entered);
             }
         }
 
