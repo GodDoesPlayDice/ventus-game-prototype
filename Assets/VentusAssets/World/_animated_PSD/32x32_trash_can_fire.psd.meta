@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,6 +69,42 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -78,7 +114,223 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 32x32_trash_can_fire_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: 3}
+        - {x: -16, y: 2}
+        - {x: -16, y: -44}
+        - {x: -15, y: -48}
+        - {x: 15, y: -48}
+        - {x: 16, y: -47}
+        - {x: 15, y: 1}
+        - {x: 15, y: 3}
+      - - {x: -3, y: -11}
+        - {x: 2, y: -15}
+        - {x: 7, y: -15}
+        - {x: 7, y: -8}
+        - {x: 6, y: -5}
+        - {x: -2, y: -5}
+        - {x: -3, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbb2e282c9acf4546ba65c7d304b731c
+      internalID: 985534728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_trash_can_fire_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: 3}
+        - {x: -16, y: 2}
+        - {x: -16, y: -44}
+        - {x: -15, y: -48}
+        - {x: 15, y: -48}
+        - {x: 16, y: -47}
+        - {x: 15, y: 1}
+        - {x: 15, y: 3}
+      - - {x: -3, y: -11}
+        - {x: 2, y: -15}
+        - {x: 7, y: -15}
+        - {x: 7, y: -8}
+        - {x: 6, y: -5}
+        - {x: -2, y: -5}
+        - {x: -3, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a0d6efcbd2346d989bc858d237dc33
+      internalID: 420849994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_trash_can_fire_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: 3}
+        - {x: -16, y: 2}
+        - {x: -16, y: -44}
+        - {x: -15, y: -48}
+        - {x: 15, y: -48}
+        - {x: 16, y: -47}
+        - {x: 15, y: 1}
+        - {x: 15, y: 3}
+      - - {x: -3, y: -11}
+        - {x: 2, y: -15}
+        - {x: 7, y: -15}
+        - {x: 7, y: -8}
+        - {x: 6, y: -5}
+        - {x: -2, y: -5}
+        - {x: -3, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c19f06f5f1a084780abb4e7bb2591388
+      internalID: -595630304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_trash_can_fire_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: 3}
+        - {x: -16, y: 2}
+        - {x: -16, y: -44}
+        - {x: -15, y: -48}
+        - {x: 15, y: -48}
+        - {x: 16, y: -47}
+        - {x: 15, y: 1}
+        - {x: 15, y: 3}
+      - - {x: -3, y: -11}
+        - {x: 2, y: -15}
+        - {x: 7, y: -15}
+        - {x: 7, y: -8}
+        - {x: 6, y: -5}
+        - {x: -2, y: -5}
+        - {x: -3, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a35aa63aa684e4e53a8ff2a98907f027
+      internalID: 56549959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_trash_can_fire_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: 3}
+        - {x: -16, y: 2}
+        - {x: -16, y: -44}
+        - {x: -15, y: -48}
+        - {x: 15, y: -48}
+        - {x: 16, y: -47}
+        - {x: 15, y: 1}
+        - {x: 15, y: 3}
+      - - {x: -3, y: -11}
+        - {x: 2, y: -15}
+        - {x: 7, y: -15}
+        - {x: 7, y: -8}
+        - {x: 6, y: -5}
+        - {x: -2, y: -5}
+        - {x: -3, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: baaa3ffc9bdef44cda6dd2cd5dd99010
+      internalID: 1312944834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_trash_can_fire_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: 3}
+        - {x: -16, y: 2}
+        - {x: -16, y: -44}
+        - {x: -15, y: -48}
+        - {x: 15, y: -48}
+        - {x: 16, y: -47}
+        - {x: 15, y: 1}
+        - {x: 15, y: 3}
+      - - {x: -3, y: -11}
+        - {x: 2, y: -15}
+        - {x: 7, y: -15}
+        - {x: 7, y: -8}
+        - {x: 6, y: -5}
+        - {x: -2, y: -5}
+        - {x: -3, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad1294305a84439b9565f2070f320de
+      internalID: -1021091549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -89,10 +341,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      32x32_trash_can_fire_0: 985534728
+      32x32_trash_can_fire_2: -595630304
+      32x32_trash_can_fire_3: 56549959
+      32x32_trash_can_fire_1: 420849994
+      32x32_trash_can_fire_4: 1312944834
+      32x32_trash_can_fire_5: -1021091549
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
