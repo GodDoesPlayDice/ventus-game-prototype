@@ -820,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786c88bc89f838b42a3c85602920f641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveStaminaCost: 0.2
+  moveStaminaCost: 0.3
   attackStaminaCost: 3
   distanceToAttack: 2
   maxStamina: 10
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a5a0ded50e1fb46b58a77c6dfc72d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  awareDistance: 5
+  awareDistance: 10
 --- !u!1 &7787526787303269178
 GameObject:
   m_ObjectHideFlags: 0

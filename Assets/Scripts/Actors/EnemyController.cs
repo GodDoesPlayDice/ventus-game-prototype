@@ -12,7 +12,8 @@ namespace Actors
         
         public static GameObject PlayerGameObject { get; private set; }
 
-        public float awareDistance = 5f;
+        public float awareDistance = 10f;
+        public float forgetDistance = 15f;
         
         
         //private Walker _walker;
@@ -75,6 +76,11 @@ namespace Actors
             return Vector3.Distance(transform.position, PlayerGameObject.transform.position) <= awareDistance;
         }
 
+        private bool IsPlayerForgot()
+        {
+            return Vector3.Distance(transform.position, PlayerGameObject.transform.position) >= forgetDistance;
+        }
+
         public void Act(Action<bool> endTurn)
         {
             _personController.ResetStamina();
@@ -83,8 +89,13 @@ namespace Actors
 
         private IEnumerator ContinueAct(Action<bool> endTurn)
         {
-            Debug.Log("COROUTINE");
             yield return 0;
+            if (IsPlayerForgot())
+            {
+                _battleManager.Unregister(this);
+                endTurn(false);
+                yield break;
+            }
             _personController.SetAction(ActorAction.Attack(_playerDamageable, success =>
             {
                 if (success)

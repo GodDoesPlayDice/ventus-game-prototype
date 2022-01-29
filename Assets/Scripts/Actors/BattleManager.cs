@@ -64,15 +64,16 @@ namespace Actors
 
         private void NextTurn()
         {
+            if (_actors.Count <= 1) return;
             onCurrentActorChange.Invoke(_actors[0]);
-            _actors[0].Act(succeed =>
+            _actors[0].Act(remain =>
             {
                 var tmp = _actors[0];
                 _actors.RemoveAt(0);
-                if (succeed)
-                {
+                // if (remain)
+                // {
                     _actors.Add(tmp);
-                }
+                // }
                 NextTurn();
             });
         }
