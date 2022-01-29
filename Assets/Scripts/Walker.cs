@@ -9,6 +9,7 @@ public class Walker : MonoBehaviour
 {
     public Vector3 destination;
     private NavMeshAgent _navMeshAgent;
+    private Vector3 _prevPos;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class Walker : MonoBehaviour
         // this is required by the library
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
+        _prevPos = transform.position;
     }
 
     public void Walk()
@@ -31,6 +33,20 @@ public class Walker : MonoBehaviour
     {
         if (_navMeshAgent == null) return;
         _navMeshAgent.destination = position;
+    }
+
+    public void Stop()
+    {
+        _navMeshAgent.isStopped = true;
+    }
+
+    public float GetDeltaDistance()
+    {
+        var position = transform.position;
+
+        var distance = Vector3.Distance(position, _prevPos);
+        _prevPos = position;
+        return distance;
     }
 
     public bool IsReachedDestination()

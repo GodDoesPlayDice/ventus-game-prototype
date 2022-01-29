@@ -1,6 +1,6 @@
 namespace Enums
 {
-    public enum ActorActions
+    public enum ActionType
     {
         Move,
         Attack,
