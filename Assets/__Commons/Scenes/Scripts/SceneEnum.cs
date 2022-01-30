@@ -8,6 +8,7 @@ public enum SceneEnum
     CONTROLLER = 0,
     SHARED_DATA = 1,
     TITLE = 2,
-    GAME = 3,
+    DESERT = 3,
+    BUILDING = 4,
     NULL = 9999
 }

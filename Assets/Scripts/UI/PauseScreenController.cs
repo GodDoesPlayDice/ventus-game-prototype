@@ -15,18 +15,19 @@ namespace UI
         public Button level2Button;
         public Button level3Button;
 
+        public LoadSceneEvent loadSceneEvent;
+
         private const string PAUSE_TEXT = "Pause";
         private const string DEAD_TEXT = "Game over";
 
         private GameManager _gameManager;
-        
+
         public void ShowPause()
         {
             pauseScreen.SetActive(true);
             header.text = PAUSE_TEXT;
             resumeButton.gameObject.SetActive(true);
             retryButton.gameObject.SetActive(false);
-            
         }
 
         public void ShowDead()
@@ -60,6 +61,18 @@ namespace UI
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             });
-    }
+
+            level1Button.onClick.AddListener(() => SwitchScene(SceneEnum.DESERT));
+            level2Button.onClick.AddListener(() => SwitchScene(SceneEnum.BUILDING));
+            //level3Button.onClick.AddListener(() => SwitchScene(SceneEnum.DESERT));
+        }
+
+        private void SwitchScene(SceneEnum newScene)
+        {
+            var loadSceneEp = new LoadSceneEP(newScene,
+                (SceneEnum) SceneManager.GetActiveScene().buildIndex, true,
+                null, null, true);
+            loadSceneEvent.Raise(loadSceneEp);
+        }
     }
 }
