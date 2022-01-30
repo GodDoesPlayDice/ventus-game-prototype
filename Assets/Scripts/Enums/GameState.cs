@@ -4,5 +4,6 @@ namespace Enums
     {
         Play,
         Pause,
+        Dead
     }
 }

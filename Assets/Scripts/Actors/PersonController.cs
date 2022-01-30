@@ -31,13 +31,15 @@ public class PersonController : MonoBehaviour
     
     public float attackDelay = 1f;
     private float _attackStartTime;
-    //private IActorAnimationManager _animationManager;
+    private IActorAnimationManager _animationManager;
+    
 
     private void Awake()
     {
         TryGetComponent(out _walker);
         TryGetComponent(out _attacker);
         //TryGetComponent(out _animationManager);
+        _animationManager = GetComponent<IActorAnimationManager>();
     }
     
     private void Start()
@@ -174,5 +176,10 @@ public class PersonController : MonoBehaviour
     private void Turn()
     {
         
+    }
+
+    public void Die()
+    {
+        _animationManager.DeathAnimation();
     }
 }

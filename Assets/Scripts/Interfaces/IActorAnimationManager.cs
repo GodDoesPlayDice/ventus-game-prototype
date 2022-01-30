@@ -4,5 +4,7 @@ namespace Interfaces
     {
         public void AttackAnimation();
         public void MovementAnimation();
+
+        public void DeathAnimation();
     }
 }

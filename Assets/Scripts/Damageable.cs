@@ -10,6 +10,7 @@ public class Damageable : MonoBehaviour
     public bool IsDead { get; private set; } = false;
 
     public UnityEvent<float, float> onCurrentHPChange;
+    public UnityEvent onDeath;
     private void Start()
     {
         onCurrentHPChange ??= new UnityEvent<float, float>();
@@ -36,5 +37,6 @@ public class Damageable : MonoBehaviour
     private void Die()
     {
         Debug.Log($"death of {gameObject.name}", this);
+        onDeath.Invoke();
     }
 }

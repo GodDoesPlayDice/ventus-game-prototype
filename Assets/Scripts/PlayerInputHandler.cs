@@ -24,7 +24,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPause(InputValue value)
     {
-        HandleTogglePause();
+        //HandleTogglePause();
     }
 
     public void OnMousePosition(InputValue value)
@@ -37,6 +37,7 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
 
+    /*
     private void HandleTogglePause()
     {
         if (GameManager.GameState != GameState.Pause)
@@ -48,6 +49,7 @@ public class PlayerInputHandler : MonoBehaviour
             GameManager.SetGameState(GameState.Play);
         }
     }
+    */
 
     private void HandleMouseClick()
     {

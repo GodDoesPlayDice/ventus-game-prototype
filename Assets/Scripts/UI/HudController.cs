@@ -96,6 +96,7 @@ namespace UI
             }
             else
             {
+                endTurnButton.SetActive(false);
                 battleBeginsMessage.SetActive(false);
                 if (currentTurnObject != null) currentTurnObject.SetActive(false);
             }

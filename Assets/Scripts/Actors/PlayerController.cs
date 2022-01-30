@@ -23,11 +23,15 @@ namespace Actors
         private bool _canAct = true;
         private bool _inBattle;
         private Action<bool> _endTurnCallback;
+        private Damageable _damageable;
+        private GameManager _gameManager;
 
         private void Awake()
         {
             TryGetComponent(out _personController);
-            //_cam = Camera.main;
+            TryGetComponent(out _damageable);
+            _damageable.onDeath.AddListener(Die);
+            _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             if (cursorController == null) cursorController = GameObject.FindObjectsOfType<CursorController>()[0];
         }
 
@@ -71,13 +75,13 @@ namespace Actors
 
         private void HandleTogglePause()
         {
-            if (GameManager.GameState != GameState.Pause)
+            if (_gameManager.GameState != GameState.Pause)
             {
-                GameManager.SetGameState(GameState.Pause);
+                _gameManager.SetGameState(GameState.Pause);
             }
             else
             {
-                GameManager.SetGameState(GameState.Play);
+                _gameManager.SetGameState(GameState.Play);
             }
         }
         
@@ -142,6 +146,12 @@ namespace Actors
             _endTurnCallback(true);
             _personController.SetAction(null);
             _canAct = false;
+        }
+
+        private void Die()
+        {
+            _personController.Die();
+            _gameManager.SetGameState(GameState.Dead);
         }
     }
 }

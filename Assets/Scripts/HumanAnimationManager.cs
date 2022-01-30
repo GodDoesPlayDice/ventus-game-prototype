@@ -8,6 +8,7 @@ public class HumanAnimationManager : MonoBehaviour, IActorAnimationManager
     private static readonly int WalkBool = Animator.StringToHash("walk");
     private static readonly int UpBool = Animator.StringToHash("up");
     private static readonly int AttackTrigger = Animator.StringToHash("attack");
+    private static readonly int DeathTrigger = Animator.StringToHash("death");
 
     private NavMeshAgent _navMeshAgent;
 
@@ -64,5 +65,10 @@ public class HumanAnimationManager : MonoBehaviour, IActorAnimationManager
         {
             animator.SetBool(WalkBool, false);
         }
+    }
+
+    public void DeathAnimation()
+    {
+        animator.SetTrigger(DeathTrigger);
     }
 }
