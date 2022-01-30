@@ -1,17 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class SceneSwitchingPoint : MonoBehaviour
 {
-    public LoadSceneEvent loadSceneEvent;
     public SceneEnum scene;
+    
+    private GameManager _gameManager;
+
+    private void Awake()
+    {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     public void SwitchScene()
     {
-        var loadSceneEp = new LoadSceneEP(scene,
-            (SceneEnum) SceneManager.GetActiveScene().buildIndex, true,
-            null, null, true);
-        loadSceneEvent.Raise(loadSceneEp);
+        _gameManager.SwitchScene(scene);
     }
 }

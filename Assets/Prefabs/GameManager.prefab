@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7139543164491718406}
   - component: {fileID: 7139543164491718407}
+  - component: {fileID: 1348039700000730547}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -44,3 +45,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da8f98602a04a95ad13d6e7c5b3d3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadSceneEvent: {fileID: 11400000, guid: 374c666e88658a64eb05b90ef6fa51be, type: 2}
+--- !u!114 &1348039700000730547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7139543164491718400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e178f831b3d75914e898df6b90540762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7139543164491718407}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SetPlayerHp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

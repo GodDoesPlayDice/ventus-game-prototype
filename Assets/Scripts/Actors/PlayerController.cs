@@ -160,11 +160,9 @@ namespace Actors
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            Debug.Log("Entered " + col.gameObject.name);
             col.TryGetComponent(out SceneSwitchingPoint switcher);
             if (switcher != null)
             {
-                Debug.Log("SWITCH");
                 switcher.SwitchScene();
             }
         }

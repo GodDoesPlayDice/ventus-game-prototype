@@ -5,7 +5,19 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100;
-    [SerializeField] private float currentHealth;
+
+    
+    private float _currentHealth = 100;
+
+    public float CurrentHealth
+    {
+        get => _currentHealth;
+        set
+        {
+            _currentHealth = value;
+            onCurrentHPChange.Invoke(_currentHealth, maxHealth);
+        }
+    }
 
     public bool IsDead { get; private set; } = false;
 
@@ -14,24 +26,24 @@ public class Damageable : MonoBehaviour
     private void Start()
     {
         onCurrentHPChange ??= new UnityEvent<float, float>();
-        currentHealth = maxHealth;
-        onCurrentHPChange.Invoke(currentHealth, maxHealth);
+        //currentHealth = maxHealth;
+        onCurrentHPChange.Invoke(_currentHealth, maxHealth);
     }
 
     public void TakeDamage(float damage)
     {
-        var newHealth = Mathf.Clamp((currentHealth - damage), 0, maxHealth);
+        var newHealth = Mathf.Clamp((_currentHealth - damage), 0, maxHealth);
         if (newHealth <= 0)
         {
             IsDead = true;
             Die();
         }
 
-        if (Math.Abs(currentHealth - newHealth) > 0.01f)
+        if (Math.Abs(_currentHealth - newHealth) > 0.01f)
         {
             onCurrentHPChange.Invoke(newHealth, maxHealth);
         }
-        currentHealth = newHealth;
+        _currentHealth = newHealth;
     }
 
     private void Die()
