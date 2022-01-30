@@ -7,13 +7,15 @@ public class Damageable : MonoBehaviour
     [SerializeField] private float maxHealth = 100;
 
     
-    private float _currentHealth = 100;
+    private float _currentHealth;
+    private bool healthInnerSet;
 
     public float CurrentHealth
     {
         get => _currentHealth;
         set
         {
+            healthInnerSet = true;
             _currentHealth = value;
             onCurrentHPChange.Invoke(_currentHealth, maxHealth);
         }
@@ -26,7 +28,7 @@ public class Damageable : MonoBehaviour
     private void Start()
     {
         onCurrentHPChange ??= new UnityEvent<float, float>();
-        //currentHealth = maxHealth;
+        if (!healthInnerSet) _currentHealth = maxHealth;
         onCurrentHPChange.Invoke(_currentHealth, maxHealth);
     }
 
