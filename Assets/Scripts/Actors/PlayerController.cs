@@ -133,7 +133,11 @@ namespace Actors
         public void SetInBattle(bool inBattle)
         {
             _inBattle = inBattle;
-            if (!inBattle)
+            if (inBattle)
+            {
+                _personController.SetAction(null);
+            }
+            else
             {
                 _canAct = true;
             }
