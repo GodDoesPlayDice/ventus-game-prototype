@@ -118,6 +118,15 @@ namespace Actors
                         }));
                     }
                     break;
+                case "Interactable":
+                    hit.collider.gameObject.TryGetComponent(out Interactable interactable);
+                    if (interactable != null)
+                    {
+                        _personController.SetAction(ActorAction.Interact(interactable, suceed =>
+                        {
+                        }));
+                    }
+                    break;
                 default:
                     break;
             }
