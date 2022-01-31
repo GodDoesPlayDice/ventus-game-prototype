@@ -130,6 +130,10 @@ namespace Actors
 
         public void SetInBattle(bool inBattle)
         {
+            if (inBattle)
+            {
+                _personController.SetAction(null);
+            }
             _inBattle = inBattle;
             _personController.SetIgnoreStamina(!inBattle);
         }

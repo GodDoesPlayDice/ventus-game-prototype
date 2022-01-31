@@ -88,6 +88,10 @@ public class PersonController : MonoBehaviour
         } else if (_action.type == ActionType.Attack)
         {
             status = Attack();
+        } else if (_action.type == ActionType.Interact)
+        {
+            status = Interact();
+            // Debug.Log("Interact!!!!! " + status);
         }
 
         if (!_ignoreStamina)
@@ -165,11 +169,42 @@ public class PersonController : MonoBehaviour
         }
         return status;
     }
-
-    // TODO: Interact
-    private void Interact()
+    
+    private ActionStatus Interact()
     {
-        
+        var status = ActionStatus.InProgress;
+
+        if (_attackStartTime + attackDelay > Time.time)
+        {
+            // Nothing, InProgress. Should listen animation instead?
+        }
+        else if (Vector3.Distance(transform.position,_action.interactable.GetClosestPoint(gameObject)) > distanceToAttack)
+        {
+            Debug.Log("Distance: " + Vector3.Distance(transform.position, _action.interactable.transform.position));
+            status = Move();
+        }
+        else
+        {
+            Debug.Log("Before interact");
+            _walker.Stop();
+            if (_ignoreStamina || _stamina - attackStaminaCost > 0)
+            {
+                Debug.Log("Before interact 2");
+                // Add Interactor if needed
+                
+                _action.interactable.Interact(gameObject);
+                status = ActionStatus.Completed;
+                _stamina -= attackStaminaCost;
+                _attackStartTime = Time.time;
+            }
+            else
+            {
+                Debug.Log("OUT");
+                status = ActionStatus.StaminaOut;
+            }
+        }
+
+        return status;
     }
 
     // TODO: Turn

@@ -89,8 +89,19 @@ namespace Actors
         {
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
-            var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+            // var hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+            var hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
+            var hit = hits[0];
+            foreach (var v in hits)
+            {
+                if (v.collider?.gameObject?.tag == "Interactable")
+                {
+                    hit = v;
+                    break;
+                }
+            }
             var objectTag = hit.collider?.gameObject?.tag;
+            Debug.Log("TAG: " + objectTag);
             switch (objectTag)
             {
                 case "Ground":

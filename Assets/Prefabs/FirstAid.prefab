@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 2273544533735797078}
   - component: {fileID: 2273544533735797073}
   - component: {fileID: 6717669050466915501}
+  - component: {fileID: 239679969298408319}
   m_Layer: 0
   m_Name: FirstAid
   m_TagString: Interactable
@@ -177,6 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf5c31357ea39b488f2329437468380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textTime: 1
+  textMovement: 0.1
 --- !u!61 &6717669050466915501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -203,3 +206,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &239679969298408319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2273544533735797079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f67b9828a547378308908d0209e6af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 25
