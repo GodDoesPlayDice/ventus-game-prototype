@@ -10,5 +10,6 @@ public enum SceneEnum
     TITLE = 2,
     DESERT = 3,
     BUILDING = 4,
+    BASEMENT = 5,
     NULL = 9999
 }
