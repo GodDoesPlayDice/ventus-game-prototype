@@ -150,6 +150,10 @@ public class PersonController : MonoBehaviour
         {
             status = Move();
         }
+        else if (_action.target.IsDead)
+        {
+            // Do nothing
+        }
         else
         {
             _walker.Stop();

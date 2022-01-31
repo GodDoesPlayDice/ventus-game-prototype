@@ -6,7 +6,7 @@ public class Damageable : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100;
 
-    
+
     private float _currentHealth;
     private bool healthInnerSet;
 
@@ -25,6 +25,7 @@ public class Damageable : MonoBehaviour
 
     public UnityEvent<float, float> onCurrentHPChange;
     public UnityEvent onDeath;
+
     private void Start()
     {
         onCurrentHPChange ??= new UnityEvent<float, float>();
@@ -34,6 +35,8 @@ public class Damageable : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (IsDead) return;
+
         var newHealth = Mathf.Clamp((_currentHealth - damage), 0, maxHealth);
         if (newHealth <= 0)
         {
@@ -45,11 +48,18 @@ public class Damageable : MonoBehaviour
         {
             onCurrentHPChange.Invoke(newHealth, maxHealth);
         }
+
         _currentHealth = newHealth;
     }
 
     private void Die()
     {
+        // TryGetComponent(out Collider2D collider);
+        // if (collider != null)
+        // {
+        //     collider.enabled = false;
+        // }
+
         Debug.Log($"death of {gameObject.name}", this);
         onDeath.Invoke();
     }
