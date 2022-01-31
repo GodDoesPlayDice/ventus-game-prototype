@@ -551,7 +551,6 @@ MonoBehaviour:
   level1Button: {fileID: 2020719992680065529}
   level2Button: {fileID: 6585331818861874052}
   level3Button: {fileID: 5430313371865490355}
-  loadSceneEvent: {fileID: 11400000, guid: 374c666e88658a64eb05b90ef6fa51be, type: 2}
 --- !u!1 &5599179050874906515
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1936497567886106213
 RectTransform:
   m_ObjectHideFlags: 0
@@ -884,7 +883,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 3
+  m_Text: Basement
 --- !u!114 &7104811887992460925
 MonoBehaviour:
   m_ObjectHideFlags: 0

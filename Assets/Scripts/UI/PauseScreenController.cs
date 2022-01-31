@@ -62,7 +62,7 @@ namespace UI
 
             level1Button.onClick.AddListener(() => _gameManager.SwitchScene(SceneEnum.DESERT));
             level2Button.onClick.AddListener(() => _gameManager.SwitchScene(SceneEnum.BUILDING));
-            //level3Button.onClick.AddListener(() => SwitchScene(SceneEnum.DESERT));
+            level3Button.onClick.AddListener(() => _gameManager.SwitchScene(SceneEnum.BASEMENT));
         }
     }
 }

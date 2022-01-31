@@ -184,16 +184,13 @@ public class PersonController : MonoBehaviour
         }
         else if (Vector3.Distance(transform.position,_action.interactable.GetClosestPoint(gameObject)) > distanceToAttack)
         {
-            Debug.Log("Distance: " + Vector3.Distance(transform.position, _action.interactable.transform.position));
             status = Move();
         }
         else
         {
-            Debug.Log("Before interact");
             _walker.Stop();
             if (_ignoreStamina || _stamina - attackStaminaCost > 0)
             {
-                Debug.Log("Before interact 2");
                 // Add Interactor if needed
                 
                 _action.interactable.Interact(gameObject);
@@ -203,7 +200,6 @@ public class PersonController : MonoBehaviour
             }
             else
             {
-                Debug.Log("OUT");
                 status = ActionStatus.StaminaOut;
             }
         }
