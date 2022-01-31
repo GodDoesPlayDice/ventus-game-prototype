@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Actions;
 using Enums;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Actors
 {
@@ -14,6 +15,8 @@ namespace Actors
 
         public float awareDistance = 10f;
         public float forgetDistance = 15f;
+
+        public BoxCollider2D idleAreaCollider;
         
         
         //private Walker _walker;
@@ -29,6 +32,9 @@ namespace Actors
         private BattleManager _battleManager;
 
         private Action<bool> _endTurn;
+
+        private float _nextIdleMoveTime;
+        private bool _idleCanMove = true;
         
 
         private void Awake()
@@ -51,7 +57,7 @@ namespace Actors
         // Start is called before the first frame update
         void Start()
         {
-
+            CalcNextMoveTime();
         }
 
         // Update is called once per frame
@@ -77,6 +83,29 @@ namespace Actors
                 _inBattle = true;
                 _battleManager.Register(this);
             }
+            else if (_idleCanMove && _nextIdleMoveTime <= Time.time)
+            {
+                _idleCanMove = false;
+                _personController.SetAction(ActorAction.Move(GetIdleWalkingPoint(), succeed =>
+                {
+                    _idleCanMove = true;
+                    CalcNextMoveTime();
+                }));
+            }
+        }
+
+        private void CalcNextMoveTime()
+        {
+            _nextIdleMoveTime = Time.time + Random.Range(0.5f, 5f);
+        }
+
+        private Vector2 GetIdleWalkingPoint()
+        {
+            var bounds = idleAreaCollider.bounds;
+            var x = Random.Range(bounds.min.x, bounds.max.x);
+            var y = Random.Range(bounds.min.y, bounds.max.y);
+            return new Vector2(x, y);
+
         }
 
         private bool IsPlayerInSight()
