@@ -372,8 +372,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
   onCurrentHPChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1396037902
@@ -390,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   animatorManager: {fileID: 0}
+  meleeDistance: 2.2
 --- !u!114 &7205130213514560575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveStaminaCost: 0.2
   attackStaminaCost: 3
-  distanceToAttack: 2
+  distanceToAttack: 7
+  distanceToInteract: 2
   maxStamina: 10
   onCurrentStaminaChange:
     m_PersistentCalls:

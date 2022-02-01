@@ -15,6 +15,7 @@ public class PersonController : MonoBehaviour
     public float moveStaminaCost = 0.2f;
     public float attackStaminaCost = 3f;
     public float distanceToAttack = 2f;
+    public float distanceToInteract = 2f;
     public float maxStamina = 10;
     
     public UnityEvent<float, float> onCurrentStaminaChange;
@@ -186,7 +187,7 @@ public class PersonController : MonoBehaviour
         {
             // Nothing, InProgress. Should listen animation instead?
         }
-        else if (Vector3.Distance(transform.position,_action.interactable.GetClosestPoint(gameObject)) > distanceToAttack)
+        else if (Vector3.Distance(transform.position,_action.interactable.GetClosestPoint(gameObject)) > distanceToInteract)
         {
             status = Move();
         }

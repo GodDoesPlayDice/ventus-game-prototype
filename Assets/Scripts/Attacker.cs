@@ -6,6 +6,7 @@ public class Attacker : MonoBehaviour
 {
     [SerializeField] private float damage;
     [HideInInspector] public HumanAnimationManager animatorManager;
+    [SerializeField] private float meleeDistance = 2.2f;
 
     private void Awake()
     {
@@ -16,7 +17,15 @@ public class Attacker : MonoBehaviour
     public void Attack(Damageable victim)
     {
         Vector3 direction = (victim.transform.position - transform.position).normalized;
-        animatorManager.AttackAnimation(direction);
+        if (Vector3.Distance(victim.transform.position, transform.position) > meleeDistance)
+        {
+            animatorManager.AttackAnimation(direction);
+        }
+        else
+        {
+            animatorManager.MeleeAttackAnimation(direction);
+        }
+
         victim.TakeDamage(damage);
     }
 }

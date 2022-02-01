@@ -8,6 +8,7 @@ public class HumanAnimationManager : MonoBehaviour, IActorAnimationManager
     private static readonly int WalkBool = Animator.StringToHash("walk");
     private static readonly int UpBool = Animator.StringToHash("up");
     private static readonly int AttackTrigger = Animator.StringToHash("attack");
+    private static readonly int AttackMeleeTrigger = Animator.StringToHash("attackMelee");
     private static readonly int DeathTrigger = Animator.StringToHash("death");
 
     private NavMeshAgent _navMeshAgent;
@@ -29,6 +30,12 @@ public class HumanAnimationManager : MonoBehaviour, IActorAnimationManager
     {
         UpAndFlip(direction);
         animator.SetTrigger(AttackTrigger);
+    }
+
+    public void MeleeAttackAnimation(Vector3 direction)
+    {
+        UpAndFlip(direction);
+        animator.SetTrigger(AttackMeleeTrigger);
     }
 
     private static bool IsUp(Vector3 v)
