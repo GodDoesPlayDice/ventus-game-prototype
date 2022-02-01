@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
@@ -54,13 +55,13 @@ public class Damageable : MonoBehaviour
 
     private void Die()
     {
-        // TryGetComponent(out Collider2D collider);
-        // if (collider != null)
-        // {
-        //     collider.enabled = false;
-        // }
-
         Debug.Log($"death of {gameObject.name}", this);
         onDeath.Invoke();
+        
+        TryGetComponent(out NavMeshAgent agent);
+        if (agent != null)
+        {
+            agent.enabled = false;
+        }
     }
 }

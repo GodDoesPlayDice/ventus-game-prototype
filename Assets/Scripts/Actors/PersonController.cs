@@ -32,6 +32,8 @@ public class PersonController : MonoBehaviour
     public float attackDelay = 1f;
     private float _attackStartTime;
     private IActorAnimationManager _animationManager;
+
+    private bool stopped;
     
 
     private void Awake()
@@ -71,10 +73,12 @@ public class PersonController : MonoBehaviour
     {
         if (_action != null)
         {
+            stopped = false;
             Act();
         }
-        else
+        else if (!stopped)
         {
+            stopped = true;
             _walker.Stop();
         }
     }

@@ -98,6 +98,14 @@ namespace Actors
                 {
                     hit = v;
                     break;
+                } else if (v.collider?.gameObject?.tag == "Enemy")
+                {
+                    hit = v;
+                    break;
+                } else if (v.collider?.gameObject?.tag == "Ground")
+                {
+                    hit = v;
+                    break;
                 }
             }
             var objectTag = hit.collider?.gameObject?.tag;
