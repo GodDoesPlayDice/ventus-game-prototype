@@ -105,7 +105,6 @@ namespace Actors
                 } else if (v.collider?.gameObject?.tag == "Ground")
                 {
                     hit = v;
-                    break;
                 }
             }
             var objectTag = hit.collider?.gameObject?.tag;
