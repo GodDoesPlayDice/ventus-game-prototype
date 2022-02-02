@@ -9,6 +9,7 @@ TagManager:
   - Obstacles
   - UI
   - Interactable
+  - Fog
   layers:
   - Default
   - TransparentFX
