@@ -26,6 +26,8 @@ namespace Actors
         private Damageable _damageable;
         private GameManager _gameManager;
 
+        private Vector2 _prevMousePos;
+
         private void Awake()
         {
             TryGetComponent(out _personController);
@@ -33,6 +35,13 @@ namespace Actors
             _damageable.onDeath.AddListener(Die);
             _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             if (cursorController == null) cursorController = GameObject.FindObjectsOfType<CursorController>()[0];
+        }
+
+        private void Update()
+        {
+            var objectPos = camera.ScreenToWorldPoint(_prevMousePos);
+            mousePosition = objectPos;
+            cursorController.mousePosition = mousePosition;
         }
 
         public void OnSwitchView(InputValue value)
@@ -65,11 +74,7 @@ namespace Actors
 
         public void OnMousePosition(InputValue value)
         {
-            var pos = value.Get<Vector2>();
-
-            var objectPos = camera.ScreenToWorldPoint(pos);
-            mousePosition = objectPos;
-            cursorController.mousePosition = mousePosition;
+            _prevMousePos = value.Get<Vector2>();
         }
 
 
