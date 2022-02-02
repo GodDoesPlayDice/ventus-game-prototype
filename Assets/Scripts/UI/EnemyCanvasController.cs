@@ -1,6 +1,7 @@
 using System;
 using Actors;
 using UnityEngine;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 namespace UI
@@ -9,7 +10,8 @@ namespace UI
     {
         public GameObject staminaAndHpPart;
         public Slider healthBarSlider;
-        public Slider staminaBarSlider;
+        public GameObject staminaBar;
+        public GameObject staminaUnit;
 
         public EnemyController actorController;
         public PersonController personController;
@@ -44,6 +46,12 @@ namespace UI
             if ((EnemyController) actor == actorController)
             {
                 staminaAndHpPart.SetActive(entered);
+                
+                // TODO: replace with something better
+                if (personController != null)
+                {
+                    OnEnemyStaminaChange(personController._stamina, personController.maxStamina);
+                }
             }
         }
 
@@ -56,8 +64,14 @@ namespace UI
 
         private void OnEnemyStaminaChange(float current, float max)
         {
-            if (staminaBarSlider != null)
-                staminaBarSlider.value = current / max;
+            foreach (Transform child in staminaBar.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            for (int i = (int)current; i > 0; i--)
+            {
+                Instantiate(staminaUnit, staminaBar.transform);
+            }
         }
     }
 }

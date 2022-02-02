@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Actors;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +17,8 @@ namespace UI
         private PersonController _playerPersonController;
 
         public Slider healthBarSlider;
-        public Slider staminaBarSlider;
+        public GameObject staminaBar;
+        public GameObject staminaUnit;
         public TextMeshProUGUI currentTurnTMP;
         public GameObject currentTurnObject;
         public GameObject battleBeginsMessage;
@@ -80,9 +83,14 @@ namespace UI
 
         private void OnPlayerStaminaChange(float current, float max)
         {
-            if (staminaBarSlider != null)
+            foreach (Transform child in staminaBar.transform)
             {
-                staminaBarSlider.value = current / max;
+                Destroy(child.gameObject);
+            }
+
+            for (int i = (int)current; i > 0; i--)
+            {
+                Instantiate(staminaUnit, staminaBar.transform);
             }
         }
 
@@ -91,11 +99,13 @@ namespace UI
             if (battleBeginsMessage == null) return;
             if (isBattle)
             {
+                staminaBar.transform.parent.gameObject.SetActive(true);
                 battleBeginsMessage.SetActive(true);
                 if (currentTurnObject != null) currentTurnObject.SetActive(true);
             }
             else
             {
+                staminaBar.transform.parent.gameObject.SetActive(false);
                 endTurnButton.SetActive(false);
                 battleBeginsMessage.SetActive(false);
                 if (currentTurnObject != null) currentTurnObject.SetActive(false);
