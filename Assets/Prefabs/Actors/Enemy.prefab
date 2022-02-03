@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 601856558388116047}
   - component: {fileID: 2147097522814324663}
   - component: {fileID: 6931436959395402619}
+  - component: {fileID: 1868066527877696506}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -713,6 +714,20 @@ MonoBehaviour:
   awareDistance: 10
   forgetDistance: 15
   idleAreaCollider: {fileID: 4461454316194708607}
+--- !u!114 &1868066527877696506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588735226730469552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626e4e2521f44fd39fb0890b9031e9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  melee: {fileID: 11400000, guid: d963adad8750e4441a8f44e963a31043, type: 2}
+  ranged: {fileID: 0}
 --- !u!1 &5645739613946714511
 GameObject:
   m_ObjectHideFlags: 0

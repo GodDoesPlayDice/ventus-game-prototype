@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 7205130213514560575}
   - component: {fileID: 8343610913277914550}
   - component: {fileID: 5761106104603790147}
+  - component: {fileID: 7670441588131142707}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -445,6 +446,20 @@ MonoBehaviour:
       m_Calls: []
   _stamina: 0
   attackDelay: 1
+--- !u!114 &7670441588131142707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417618211355460929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626e4e2521f44fd39fb0890b9031e9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  melee: {fileID: 11400000, guid: d963adad8750e4441a8f44e963a31043, type: 2}
+  ranged: {fileID: 11400000, guid: 3786b951da9b16f40bd0dafae1a4661b, type: 2}
 --- !u!1 &6787380453455628326
 GameObject:
   m_ObjectHideFlags: 0
