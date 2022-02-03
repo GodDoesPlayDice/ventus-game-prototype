@@ -35,7 +35,7 @@ namespace Actors
             float currentRadius = material.GetFloat(Radius);
             if (isEnabled)
             {
-                if (attackRadius - currentRadius >= 0.01f)
+                if (Mathf.Abs(attackRadius - currentRadius) > 0.01f)
                 {
                     material.SetFloat(Radius, Mathf.Lerp(currentRadius, attackRadius, growSmooth));
                 }
