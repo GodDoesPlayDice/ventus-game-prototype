@@ -19,7 +19,7 @@ public class PersonController : MonoBehaviour
     public float distanceToInteract = 2f;
     // public float maxStamina = 10;
     
-    public UnityEvent<float, float> onCurrentStaminaChange;
+    // public UnityEvent<float, float> onCurrentStaminaChange;
 
     //public float attackTime = 1f;
     
@@ -52,7 +52,7 @@ public class PersonController : MonoBehaviour
     
     private void Start()
     {
-        onCurrentStaminaChange ??= new UnityEvent<float, float>();
+        // onCurrentStaminaChange ??= new UnityEvent<float, float>();
         ResetStamina();
     }
 
@@ -60,7 +60,7 @@ public class PersonController : MonoBehaviour
     {
         // _stamina = maxStamina;
         _staminaController.ResetStamina();
-        onCurrentStaminaChange.Invoke(_staminaController._stamina, _staminaController.maxStamina);
+        // onCurrentStaminaChange.Invoke(_staminaController._stamina, _staminaController.maxStamina);
     }
 
     public void SetIgnoreStamina(bool ignoreStamina)
@@ -105,10 +105,10 @@ public class PersonController : MonoBehaviour
             // Debug.Log("Interact!!!!! " + status);
         }
 
-        if (!_ignoreStamina)
-        {
-            onCurrentStaminaChange.Invoke(_staminaController._stamina, _staminaController.maxStamina);
-        }
+        // if (!_ignoreStamina)
+        // {
+        //     onCurrentStaminaChange.Invoke(_staminaController._stamina, _staminaController.maxStamina);
+        // }
 
         var tmpAction = _action;
         if (status == ActionStatus.Completed)

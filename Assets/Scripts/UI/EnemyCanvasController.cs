@@ -31,10 +31,7 @@ namespace UI
 
         private void Start()
         {
-            if (personController != null)
-            {
-                personController.onCurrentStaminaChange.AddListener(OnEnemyStaminaChange);
-            }
+            staminaController.onCurrentStaminaChange.AddListener(OnEnemyStaminaChange);
 
             if (damageable != null)
             {

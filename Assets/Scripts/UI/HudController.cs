@@ -14,7 +14,8 @@ namespace UI
         private GameObject _player;
         private Damageable _playerDamageable;
         private PlayerController _playerController;
-        private PersonController _playerPersonController;
+        // private PersonController _playerPersonController;
+        private StaminaController _playerStaminaController;
 
         public Slider healthBarSlider;
         public GameObject staminaBar;
@@ -36,7 +37,7 @@ namespace UI
             _player = GameObject.FindGameObjectWithTag("Player");
             if (_player != null)
             {
-                _player.TryGetComponent(out _playerPersonController);
+                _player.TryGetComponent(out _playerStaminaController);
                 _player.TryGetComponent(out _playerDamageable);
                 _player.TryGetComponent(out _playerController);
             }
@@ -46,9 +47,9 @@ namespace UI
                 _playerDamageable.onCurrentHPChange.AddListener(OnPlayerHPChange);
             }
 
-            if (_playerPersonController != null)
+            if (_playerStaminaController != null)
             {
-                _playerPersonController.onCurrentStaminaChange.AddListener(OnPlayerStaminaChange);
+                _playerStaminaController.onCurrentStaminaChange.AddListener(OnPlayerStaminaChange);
             }
         }
 

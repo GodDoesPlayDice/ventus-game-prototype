@@ -13,7 +13,8 @@ public class StaminaController : MonoBehaviour
 
     public void ResetStamina()
     {
-        _stamina = maxStamina;;
+        _stamina = maxStamina;
+        onCurrentStaminaChange.Invoke(_stamina, maxStamina);
     }
 
     public bool UseStaminaIfEnough(float cost)
@@ -21,6 +22,7 @@ public class StaminaController : MonoBehaviour
         if (_stamina >= cost)
         {
             _stamina -= cost;
+            onCurrentStaminaChange.Invoke(_stamina, maxStamina);
             return true;
         }
 
