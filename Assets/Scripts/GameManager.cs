@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _playerDamageable = GameObject.Find("Player").GetComponent<Damageable>();
+        _playerDamageable = GameObject.FindGameObjectWithTag("Player").GetComponent<Damageable>();
         
         _pauseScreen = GameObject.Find("PauseScreen").GetComponent<PauseScreenController>();
         _pauseScreen.SetGameManager(this);

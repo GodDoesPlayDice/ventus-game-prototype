@@ -46,7 +46,7 @@ namespace Actors
             // find player
             if (PlayerGameObject == null)
             {
-                PlayerGameObject = GameObject.Find("Player");
+                PlayerGameObject = GameObject.FindGameObjectsWithTag("Player")[0];
             }
             _playerDamageable = PlayerGameObject.GetComponent<Damageable>();
 
