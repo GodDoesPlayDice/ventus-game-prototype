@@ -16,6 +16,7 @@ namespace UI
         public EnemyController actorController;
         public PersonController personController;
         public Damageable damageable;
+        public StaminaController staminaController;
 
         private BattleManager _battleManager;
 
@@ -50,7 +51,7 @@ namespace UI
                 // TODO: replace with something better
                 if (personController != null)
                 {
-                    OnEnemyStaminaChange(personController._stamina, personController.maxStamina);
+                    OnEnemyStaminaChange(staminaController._stamina, staminaController.maxStamina);
                 }
             }
         }

@@ -4,6 +4,10 @@
     {
         Knife,
         Pistol,
-        Rifle
+        Machinegun,
+        Rifle,
+        Shotgun,
+        Blaster,
+        GrenadeLauncher
     }
 }

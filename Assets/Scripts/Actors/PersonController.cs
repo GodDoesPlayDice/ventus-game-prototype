@@ -17,13 +17,13 @@ public class PersonController : MonoBehaviour
     public float attackStaminaCost = 3f;
     //public float distanceToAttack = 2f;
     public float distanceToInteract = 2f;
-    public float maxStamina = 10;
+    // public float maxStamina = 10;
     
     public UnityEvent<float, float> onCurrentStaminaChange;
 
     //public float attackTime = 1f;
     
-    public float _stamina;
+    // public float _stamina;
     private bool _ignoreStamina = true;
     private ActorAction _action;
     
@@ -35,6 +35,7 @@ public class PersonController : MonoBehaviour
     private float _attackStartTime;
     private IActorAnimationManager _animationManager;
     private WeaponHolder _weaponHolder;
+    private StaminaController _staminaController;
 
     private bool stopped;
     
@@ -43,6 +44,7 @@ public class PersonController : MonoBehaviour
     {
         TryGetComponent(out _walker);
         TryGetComponent(out _attacker);
+        _staminaController = GetComponent<StaminaController>();
         //TryGetComponent(out _animationManager);
         _animationManager = GetComponent<IActorAnimationManager>();
         _weaponHolder = GetComponent<WeaponHolder>();
@@ -56,8 +58,9 @@ public class PersonController : MonoBehaviour
 
     public void ResetStamina()
     {
-        _stamina = maxStamina;
-        onCurrentStaminaChange.Invoke(_stamina, maxStamina);
+        // _stamina = maxStamina;
+        _staminaController.ResetStamina();
+        onCurrentStaminaChange.Invoke(_staminaController._stamina, _staminaController.maxStamina);
     }
 
     public void SetIgnoreStamina(bool ignoreStamina)
@@ -104,7 +107,7 @@ public class PersonController : MonoBehaviour
 
         if (!_ignoreStamina)
         {
-            onCurrentStaminaChange.Invoke(_stamina, maxStamina);
+            onCurrentStaminaChange.Invoke(_staminaController._stamina, _staminaController.maxStamina);
         }
 
         var tmpAction = _action;
@@ -125,8 +128,8 @@ public class PersonController : MonoBehaviour
         var status = ActionStatus.InProgress;
 
         var distance = _walker.GetDeltaDistance();
-        _stamina -= distance * moveStaminaCost;
-        if (_ignoreStamina || _stamina > 0)
+        // _stamina -= distance * moveStaminaCost;
+        if (_ignoreStamina || _staminaController.UseStaminaIfEnough(distance * moveStaminaCost))
         {
             if (!_action.started)
             {
@@ -166,13 +169,13 @@ public class PersonController : MonoBehaviour
         else
         {
             _walker.Stop();
-            if (_ignoreStamina || _stamina - attackStaminaCost > 0)
+            if (_ignoreStamina || _staminaController.UseStaminaIfEnough(attackStaminaCost))
             {
                 // TODO: wait animation to play !!!
                 
                 _attacker.Attack(_action.target, _weaponHolder.GetWeaponForDistance(distance));
                 status = ActionStatus.Completed;
-                _stamina -= attackStaminaCost;
+                // _stamina -= attackStaminaCost;
                 _attackStartTime = Time.time;
             }
             else
@@ -198,13 +201,13 @@ public class PersonController : MonoBehaviour
         else
         {
             _walker.Stop();
-            if (_ignoreStamina || _stamina - attackStaminaCost > 0)
+            if (_ignoreStamina || _staminaController.UseStaminaIfEnough(attackStaminaCost))
             {
                 // Add Interactor if needed
                 
                 _action.interactable.Interact(gameObject);
                 status = ActionStatus.Completed;
-                _stamina -= attackStaminaCost;
+                // _stamina -= attackStaminaCost;
                 _attackStartTime = Time.time;
             }
             else

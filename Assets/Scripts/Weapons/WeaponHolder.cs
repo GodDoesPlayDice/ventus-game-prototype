@@ -1,11 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Weapons
 {
     public class WeaponHolder : MonoBehaviour
     {
-        public WeaponData melee;
-        public WeaponData ranged;
+        [field: SerializeField] public WeaponData melee { get; private set; }
+        [field: SerializeField] public WeaponData ranged { get; private set; }
+
+        public float changeStaminaCost = 1;
+
+        private StaminaController _staminaController;
+
+        private void Awake()
+        {
+            _staminaController = GetComponent<StaminaController>();
+        }
 
         // Ranged must have more distnce then melee
         public float GetMaxDistance()
@@ -30,6 +40,17 @@ namespace Weapons
             }
 
             return result;
+        }
+
+        public bool ChangeRanged(WeaponData weapon)
+        {
+            if (_staminaController.UseStaminaIfEnough(changeStaminaCost))
+            {
+                ranged = weapon;
+                return true;
+            }
+
+            return false;
         }
     }
 }

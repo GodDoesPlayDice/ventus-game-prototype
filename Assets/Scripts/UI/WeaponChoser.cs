@@ -47,9 +47,11 @@ namespace UI
 
         private void OnItemSelected(WeaponData weapon)
         {
-            _playerWeapons.ranged = weapon;
-            _image.sprite = weapon.sprite;
-            HideWeapons();
+            if (_playerWeapons.ChangeRanged(weapon))
+            {
+                _image.sprite = weapon.sprite;
+                HideWeapons();
+            }
         }
 
         public void SwitchActive()

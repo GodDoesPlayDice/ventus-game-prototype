@@ -506,6 +506,7 @@ GameObject:
   - component: {fileID: 2147097522814324663}
   - component: {fileID: 6931436959395402619}
   - component: {fileID: 1868066527877696506}
+  - component: {fileID: 7842975707421641778}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -690,11 +691,9 @@ MonoBehaviour:
   moveStaminaCost: 0.3
   attackStaminaCost: 3
   distanceToInteract: 2
-  maxStamina: 10
   onCurrentStaminaChange:
     m_PersistentCalls:
       m_Calls: []
-  _stamina: 0
   attackDelay: 1
 --- !u!114 &6931436959395402619
 MonoBehaviour:
@@ -723,8 +722,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626e4e2521f44fd39fb0890b9031e9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  melee: {fileID: 11400000, guid: d963adad8750e4441a8f44e963a31043, type: 2}
-  ranged: {fileID: 0}
+  <melee>k__BackingField: {fileID: 11400000, guid: d963adad8750e4441a8f44e963a31043, type: 2}
+  <ranged>k__BackingField: {fileID: 0}
+  changeStaminaCost: 1
+--- !u!114 &7842975707421641778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588735226730469552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1589853571c0f6f4ca027d20d19f1399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 10
+  _stamina: 0
 --- !u!1 &5645739613946714511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,6 +1146,7 @@ MonoBehaviour:
   actorController: {fileID: 6931436959395402619}
   personController: {fileID: 2147097522814324663}
   damageable: {fileID: 2370158615624556630}
+  staminaController: {fileID: 7842975707421641778}
 --- !u!1 &8900647124399441130
 GameObject:
   m_ObjectHideFlags: 0

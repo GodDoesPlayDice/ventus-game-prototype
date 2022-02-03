@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 4044604476947161186}
   - component: {fileID: 791454354}
   - component: {fileID: 1229412491}
+  - component: {fileID: 1161818518388134036}
+  - component: {fileID: 437779678165687522}
   m_Layer: 6
   m_Name: GenericCharacter
   m_TagString: Player
@@ -328,9 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474a1e8bf69f46ab937722b39b6ec3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
   animatorManager: {fileID: 0}
-  meleeDistance: 2.2
 --- !u!114 &2734230055956432240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,13 +363,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveStaminaCost: 0.2
   attackStaminaCost: 3
-  distanceToAttack: 7
   distanceToInteract: 2
-  maxStamina: 10
   onCurrentStaminaChange:
     m_PersistentCalls:
       m_Calls: []
-  _stamina: 0
   attackDelay: 1
 --- !u!114 &791454354
 MonoBehaviour:
@@ -411,6 +408,35 @@ MonoBehaviour:
   shrinkSmooth: 0.25
   isEnabled: 0
   material: {fileID: 2100000, guid: fe58f4e74c16944e1a97fdfc3e27a251, type: 2}
+--- !u!114 &1161818518388134036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132908324018744914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1589853571c0f6f4ca027d20d19f1399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 10
+  _stamina: 0
+--- !u!114 &437779678165687522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132908324018744914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626e4e2521f44fd39fb0890b9031e9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <melee>k__BackingField: {fileID: 11400000, guid: d963adad8750e4441a8f44e963a31043, type: 2}
+  <ranged>k__BackingField: {fileID: 11400000, guid: 3786b951da9b16f40bd0dafae1a4661b, type: 2}
+  changeStaminaCost: 1
 --- !u!1 &6132908324424395245
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742688f664c64e04986582d5dd6fd2a2, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  type: 0
+  type: 4
   sprite: {fileID: 21300000, guid: 977b3fb7cda235244a3392427b18ae7b, type: 3}
   melee: 0
   damage: 20
   distance: 7
-  staminaCost: 3
+  staminaCost: 4
   prefix: shotgun
