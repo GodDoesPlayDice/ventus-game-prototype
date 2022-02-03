@@ -51,7 +51,12 @@ namespace Actors
 
         public void ShowAttackRadius()
         {
-            
+            isEnabled = true;
+        }
+
+        public void HideAttackRadius()
+        {
+            isEnabled = false;
         }
         
     }

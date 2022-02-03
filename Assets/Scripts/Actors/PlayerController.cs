@@ -7,6 +7,7 @@ using Enums;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Weapons;
 
 namespace Actors
 {
@@ -17,7 +18,7 @@ namespace Actors
         public CursorController cursorController;
 
         public List<GameObject> cameraList;
-        
+
         private PersonController _personController;
 
         private bool _canAct = true;
@@ -25,6 +26,8 @@ namespace Actors
         private Action<bool> _endTurnCallback;
         private Damageable _damageable;
         private GameManager _gameManager;
+        private AttackRadiusController _attackRadiusController;
+        private WeaponHolder _weaponHolder;
 
         private Vector2 _prevMousePos;
 
@@ -32,6 +35,8 @@ namespace Actors
         {
             TryGetComponent(out _personController);
             TryGetComponent(out _damageable);
+            _attackRadiusController = GetComponent<AttackRadiusController>();
+            _weaponHolder = GetComponent<WeaponHolder>();
             _damageable.onDeath.AddListener(Die);
             _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
             if (cursorController == null) cursorController = GameObject.FindObjectsOfType<CursorController>()[0];
@@ -89,7 +94,7 @@ namespace Actors
                 _gameManager.SetGameState(GameState.Play);
             }
         }
-        
+
         private void HandleMouseClick()
         {
             if (EventSystem.current.IsPointerOverGameObject())
@@ -103,26 +108,34 @@ namespace Actors
                 {
                     hit = v;
                     break;
-                } else if (v.collider?.gameObject?.tag == "Enemy")
+                }
+                else if (v.collider?.gameObject?.tag == "Enemy")
                 {
                     hit = v;
                     break;
-                } else if (v.collider?.gameObject?.tag == "Ground")
+                }
+                else if (v.collider?.gameObject?.tag == "Ground")
                 {
                     hit = v;
                 }
             }
+
             var objectTag = hit.collider?.gameObject?.tag;
             Debug.Log("TAG: " + objectTag);
             switch (objectTag)
             {
                 case "Ground":
+                    SetShowAttackRadius(false);
                     // _actorController.selectedDestination = mousePosition;
                     // _actorController.selectedAction = ActorActions.Move;
                     // _actorController.Act();
                     _personController.SetAction(ActorAction.Move(mousePosition, succeed =>
                     {
-                        if (!succeed)
+                        if (succeed)
+                        {
+                            SetShowAttackRadius(true);
+                        }
+                        else
                         {
                             EndTurn();
                         }
@@ -132,23 +145,29 @@ namespace Actors
                     hit.collider.gameObject.TryGetComponent(out Damageable victim);
                     if (victim != null)
                     {
+                        SetShowAttackRadius(false);
                         // Debug.Log("trying to attack");
                         // _actorController.selectedVictim = victim;
                         // _actorController.selectedAction = ActorActions.Attack;
                         // _actorController.Act();
                         _personController.SetAction(ActorAction.Attack(victim, succeed =>
                         {
+                            SetShowAttackRadius(true);
                         }));
                     }
+
                     break;
                 case "Interactable":
                     hit.collider.gameObject.TryGetComponent(out Interactable interactable);
                     if (interactable != null)
                     {
+                        SetShowAttackRadius(false);
                         _personController.SetAction(ActorAction.Interact(interactable, suceed =>
                         {
+                            SetShowAttackRadius(true);
                         }));
                     }
+
                     break;
                 default:
                     break;
@@ -168,11 +187,13 @@ namespace Actors
             if (inBattle)
             {
                 _personController.SetAction(null);
+                SetShowAttackRadius(true);
             }
             else
             {
                 _canAct = true;
             }
+
             _personController.SetIgnoreStamina(!inBattle);
         }
 
@@ -182,6 +203,22 @@ namespace Actors
             _endTurnCallback(true);
             _personController.SetAction(null);
             _canAct = false;
+            SetShowAttackRadius(false);
+        }
+
+        private void SetShowAttackRadius(bool active)
+        {
+            if (!_inBattle) return;
+            
+            if (active)
+            {
+                _attackRadiusController.attackRadius = _weaponHolder.ranged.distance * 2;
+                _attackRadiusController.ShowAttackRadius();
+            }
+            else
+            {
+                _attackRadiusController.HideAttackRadius();
+            }
         }
 
         private void Die()
