@@ -33,7 +33,7 @@ namespace UI
                 _battleManager.onCurrentActorChange.AddListener(OnCurrentActorChange);
             }
 
-            _player = GameObject.Find("Player");
+            _player = GameObject.FindGameObjectWithTag("Player");
             if (_player != null)
             {
                 _player.TryGetComponent(out _playerPersonController);

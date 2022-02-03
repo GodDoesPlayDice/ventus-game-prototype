@@ -29,7 +29,7 @@ public class EnemyControllerOld : MonoBehaviour
         TryGetComponent(out _actorController);
         if (_turnManager == null) _turnManager = GameObject.FindObjectOfType<TurnManager>();
         // find player
-        if (PlayerGameObject == null) PlayerGameObject = GameObject.Find("Player");
+        if (PlayerGameObject == null) PlayerGameObject = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()

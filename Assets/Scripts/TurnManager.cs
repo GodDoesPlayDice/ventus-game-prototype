@@ -17,14 +17,14 @@ public class TurnManager : MonoBehaviour
     {
         _actorsQueueList = new List<ActorController>();
         onQueueChange ??= new UnityEvent<List<ActorController>>();
-        PlayerActor = GameObject.Find("Player").GetComponent<ActorController>();
+        PlayerActor = GameObject.FindGameObjectWithTag("Player").GetComponent<ActorController>();
         AddToQueue(PlayerActor);
         CurrentActor = PlayerActor;
     }
 
     // private void Start()
     // {
-    //     PlayerActor = GameObject.Find("Player").GetComponent<ActorController>();
+    //     PlayerActor = GameObject.FindGameObjectWithTag("Player").GetComponent<ActorController>();
     //     AddToQueue(PlayerActor);
     //     CurrentActor = PlayerActor;
     // }
