@@ -674,9 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474a1e8bf69f46ab937722b39b6ec3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   animatorManager: {fileID: 0}
-  meleeDistance: 2.2
 --- !u!114 &2147097522814324663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,7 +689,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveStaminaCost: 0.3
   attackStaminaCost: 3
-  distanceToAttack: 2
   distanceToInteract: 2
   maxStamina: 10
   onCurrentStaminaChange:
@@ -823,7 +820,7 @@ Animator:
   m_GameObject: {fileID: 5645739613946714511}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 19757c0da9abd4a8f8f8978f9c0d006f, type: 2}
+  m_Controller: {fileID: 9100000, guid: cebc9ffcbc930442294f64e4b7154c2b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

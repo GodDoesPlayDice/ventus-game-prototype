@@ -31,7 +31,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attack_3
+    m_ConditionEvent: machinegun_attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: -5725280631227573764}
   m_DstState: {fileID: 0}
@@ -208,7 +208,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attack_6
+    m_ConditionEvent: blaster_attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: -6517325734717775065}
   m_DstState: {fileID: 0}
@@ -280,7 +280,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_6
+  m_Name: Blaster
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 6107749241916221871}
@@ -306,7 +306,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_4
+  m_Name: Rifle
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 8454553255305958748}
@@ -332,7 +332,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_3
+  m_Name: Machinegun
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3751684246509508818}
@@ -587,7 +587,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_5
+  m_Name: Shotgun
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 7038140920396863451}
@@ -841,7 +841,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attack_2
+    m_ConditionEvent: pistol_attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 8034750321344706967}
   m_DstState: {fileID: 0}
@@ -908,26 +908,26 @@ AnimatorStateMachine:
   - {fileID: 1804069286154518033}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 270937325549926295}
-    second: []
-  - first: {fileID: -6517325734717775065}
-    second: []
-  - first: {fileID: -3421230681699220071}
-    second: []
-  - first: {fileID: -6012199501127402418}
-    second: []
-  - first: {fileID: -5725280631227573764}
-    second: []
-  - first: {fileID: 8034750321344706967}
-    second: []
-  - first: {fileID: 1273068827185058963}
-    second: []
-  - first: {fileID: 2561011481190090337}
-    second:
-    - {fileID: -1963415830584111870}
   - first: {fileID: -1295286445973547890}
     second:
     - {fileID: -8452304306374774190}
+  - first: {fileID: 2561011481190090337}
+    second:
+    - {fileID: -1963415830584111870}
+  - first: {fileID: 1273068827185058963}
+    second: []
+  - first: {fileID: 8034750321344706967}
+    second: []
+  - first: {fileID: -5725280631227573764}
+    second: []
+  - first: {fileID: -6012199501127402418}
+    second: []
+  - first: {fileID: -3421230681699220071}
+    second: []
+  - first: {fileID: -6517325734717775065}
+    second: []
+  - first: {fileID: 270937325549926295}
+    second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 60, y: 190, z: 0}
   m_EntryPosition: {x: 90, y: 320, z: 0}
@@ -970,61 +970,61 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: walk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: death
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: attack_1
+    m_Controller: {fileID: 0}
+  - m_Name: knife_attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: attack_2
+    m_Controller: {fileID: 0}
+  - m_Name: pistol_attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: attack_3
+    m_Controller: {fileID: 0}
+  - m_Name: machinegun_attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: attack_4
+    m_Controller: {fileID: 0}
+  - m_Name: rifle_attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: attack_5
+    m_Controller: {fileID: 0}
+  - m_Name: shotgun_attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: attack_6
+    m_Controller: {fileID: 0}
+  - m_Name: blaster_attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: attack_7
+    m_Controller: {fileID: 0}
+  - m_Name: grenadeLauncher_attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1062,7 +1062,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_7
+  m_Name: GrenadeLauncher
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 4455985455234900799}
@@ -1177,7 +1177,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attack_4
+    m_ConditionEvent: rifle_attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: -6012199501127402418}
   m_DstState: {fileID: 0}
@@ -1225,7 +1225,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_1
+  m_Name: Knife
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7576004740756344222}
@@ -1292,7 +1292,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attack_7
+    m_ConditionEvent: grenadeLauncher_attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 270937325549926295}
   m_DstState: {fileID: 0}
@@ -1527,7 +1527,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attack_5
+    m_ConditionEvent: shotgun_attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: -3421230681699220071}
   m_DstState: {fileID: 0}
@@ -1688,7 +1688,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attack_1
+    m_ConditionEvent: knife_attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 1273068827185058963}
   m_DstState: {fileID: 0}
@@ -1733,7 +1733,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_2
+  m_Name: Pistol
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -6827242712806070880}

@@ -3,6 +3,7 @@ using Enums;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
+using Weapons;
 
 
 public class PersonController : MonoBehaviour
@@ -14,7 +15,7 @@ public class PersonController : MonoBehaviour
     
     public float moveStaminaCost = 0.2f;
     public float attackStaminaCost = 3f;
-    public float distanceToAttack = 2f;
+    //public float distanceToAttack = 2f;
     public float distanceToInteract = 2f;
     public float maxStamina = 10;
     
@@ -33,6 +34,7 @@ public class PersonController : MonoBehaviour
     public float attackDelay = 1f;
     private float _attackStartTime;
     private IActorAnimationManager _animationManager;
+    private WeaponHolder _weaponHolder;
 
     private bool stopped;
     
@@ -43,6 +45,7 @@ public class PersonController : MonoBehaviour
         TryGetComponent(out _attacker);
         //TryGetComponent(out _animationManager);
         _animationManager = GetComponent<IActorAnimationManager>();
+        _weaponHolder = GetComponent<WeaponHolder>();
     }
     
     private void Start()
@@ -147,11 +150,12 @@ public class PersonController : MonoBehaviour
     private ActionStatus Attack()
     {
         var status = ActionStatus.InProgress;
+        var distance = Vector3.Distance(transform.position, _action.target.transform.position);
         if (_attackStartTime + attackDelay > Time.time)
         {
             // Nothing, InProgress. Should listen animation instead?
         }
-        else if (Vector3.Distance(transform.position, _action.target.transform.position) > distanceToAttack)
+        else if (distance > _weaponHolder.GetMaxDistance())
         {
             status = Move();
         }
@@ -166,7 +170,7 @@ public class PersonController : MonoBehaviour
             {
                 // TODO: wait animation to play !!!
                 
-                _attacker.Attack(_action.target);
+                _attacker.Attack(_action.target, _weaponHolder.GetWeaponForDistance(distance));
                 status = ActionStatus.Completed;
                 _stamina -= attackStaminaCost;
                 _attackStartTime = Time.time;

@@ -52,7 +52,7 @@ public class ActorController : MonoBehaviour
             case ActorActions.Attack:
                 // Debug.Log($"attacked {_currentVictim.name}");
                 _animationManager.AttackAnimation();
-                _attacker.Attack(selectedVictim);
+                _attacker.Attack(selectedVictim, null);
                 StartCoroutine(CountAfterAttackRoutine());
                 break;
             case ActorActions.Interact:

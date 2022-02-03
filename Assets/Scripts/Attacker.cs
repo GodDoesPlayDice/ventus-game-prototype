@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
+using Weapons;
 
 [RequireComponent(typeof(HumanAnimationManager))]
 public class Attacker : MonoBehaviour
 {
-    [SerializeField] private float damage;
+    //[SerializeField] private float damage;
     [HideInInspector] public HumanAnimationManager animatorManager;
-    [SerializeField] private float meleeDistance = 2.2f;
+    //[SerializeField] private float meleeDistance = 2.2f;
 
     private void Awake()
     {
@@ -14,18 +15,11 @@ public class Attacker : MonoBehaviour
     }
 
     private static readonly int AttackTrigger = Animator.StringToHash("attack");
-    public void Attack(Damageable victim)
+    public void Attack(Damageable victim, WeaponData weapon)
     {
         Vector3 direction = (victim.transform.position - transform.position).normalized;
-        if (Vector3.Distance(victim.transform.position, transform.position) > meleeDistance)
-        {
-            animatorManager.AttackAnimation(direction);
-        }
-        else
-        {
-            animatorManager.MeleeAttackAnimation(direction);
-        }
+        animatorManager.AttackAnimation(direction, weapon.prefix);
 
-        victim.TakeDamage(damage);
+        victim.TakeDamage(weapon.damage);
     }
 }

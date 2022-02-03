@@ -8,8 +8,9 @@ namespace Weapons
         public WeaponType type;
         public Sprite sprite;
         public bool melee;
-        public float damage;
+        public float damage = 20;
         public float distance;
+        public float staminaCost = 3;
         public string prefix;
     }
 }
