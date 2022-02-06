@@ -14,12 +14,16 @@ public class GameManager : MonoBehaviour
     public LoadSceneEvent loadSceneEvent;
 
     private Damageable _playerDamageable;
+    private AnimatorOverrideManager _playerAnimatorManager;
     private PauseScreenController _pauseScreen;
 
     private void Awake()
     {
-        _playerDamageable = GameObject.FindGameObjectWithTag("Player").GetComponent<Damageable>();
+        var player = GameObject.FindGameObjectWithTag("Player");
+        _playerDamageable = player.GetComponent<Damageable>();
+        _playerAnimatorManager = player.GetComponentInChildren<AnimatorOverrideManager>();
         
+
         _pauseScreen = GameObject.Find("PauseScreen").GetComponent<PauseScreenController>();
         _pauseScreen.SetGameManager(this);
         Time.timeScale = 1;
@@ -61,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             _playerDamageable.CurrentHealth = hp;
         }
+        ChangePlayerArmor();
     }
     
     public void SwitchScene(SceneEnum scene)
@@ -69,5 +74,11 @@ public class GameManager : MonoBehaviour
             (SceneEnum) SceneManager.GetActiveScene().buildIndex, true,
             null, _playerDamageable.CurrentHealth.ToString(), true);
         loadSceneEvent.Raise(loadSceneEp);
+    }
+
+    private void ChangePlayerArmor()
+    {
+        var armorHolder = GameObject.FindGameObjectsWithTag("ArmorSelection")[0];
+        _playerAnimatorManager.selectedCharacter = armorHolder.GetComponent<ArmorControllerHolder>().selectedCharacter;
     }
 }

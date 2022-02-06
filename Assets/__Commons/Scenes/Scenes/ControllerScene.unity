@@ -157,7 +157,7 @@ MonoBehaviour:
   loadingScreen: {fileID: 1814782799}
   sceneChangedEvent: {fileID: 11400000, guid: 536e88b175aa643478a1ded48109e666, type: 2}
   loadFirst:
-    scene: 3
+    scene: 2
     sceneToUnload: 9999
     showAfterLoad: 1
     param: 

@@ -364,9 +364,6 @@ MonoBehaviour:
   moveStaminaCost: 0.2
   attackStaminaCost: 3
   distanceToInteract: 2
-  onCurrentStaminaChange:
-    m_PersistentCalls:
-      m_Calls: []
   attackDelay: 1
 --- !u!114 &791454354
 MonoBehaviour:
@@ -422,6 +419,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStamina: 10
   _stamina: 0
+  onCurrentStaminaChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &437779678165687522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +532,7 @@ Animator:
   m_GameObject: {fileID: 6132908324424395245}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cebc9ffcbc930442294f64e4b7154c2b, type: 2}
+  m_Controller: {fileID: 22100000, guid: 10befc6e299734fe0b86dfe0b0ba2672, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

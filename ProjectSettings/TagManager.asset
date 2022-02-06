@@ -10,6 +10,7 @@ TagManager:
   - UI
   - Interactable
   - Fog
+  - ArmorSelection
   layers:
   - Default
   - TransparentFX
