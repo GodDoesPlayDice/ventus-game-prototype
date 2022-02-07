@@ -31,7 +31,8 @@ namespace UI
         {
             var pos = transform.position;
             var offset = new Vector3(0,
-                weaponButtonPrefab.GetComponentInChildren<Image>().rectTransform.rect.height / 2 + itemsMargin);
+                (GetComponent<RectTransform>().rect.height + itemsMargin) * GetComponentInParent<Canvas>().scaleFactor);
+            Debug.Log("Offset: " + offset);
             var prevPosition = pos;
             foreach (var weapon in weapons)
             {

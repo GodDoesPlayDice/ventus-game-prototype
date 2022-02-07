@@ -259,7 +259,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6dafc7015d490874eaf680b5c7d13788, type: 2}
   - {fileID: 11400000, guid: 0e90209f7266c544abd5b5ef1cb0f554, type: 2}
   - {fileID: 11400000, guid: 033f40e81e167f84486e8fc8996869fb, type: 2}
-  itemsMargin: 0.1
+  itemsMargin: 10
 --- !u!114 &7541806305024374020
 MonoBehaviour:
   m_ObjectHideFlags: 0
