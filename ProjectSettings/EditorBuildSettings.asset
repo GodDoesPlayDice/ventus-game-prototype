@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/__Commons/Scenes/Scenes/SharedDataScene.unity
     guid: 78857e4756dd3b4448852b878e3c3998
   - enabled: 1
-    path: Assets/Scenes/Title.unity
+    path: Assets/Scenes/StatMenu.unity
     guid: dad3c2f3e9eba654dab3a3108a827698
   - enabled: 1
     path: Assets/Scenes/Desert.unity

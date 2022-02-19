@@ -30,9 +30,10 @@ namespace UI
 
         public void SelectArmor(GameObject obj)
         {
-            var armourSprite = obj.GetComponent<Image>();
             var armourButtonController = obj.GetComponent<ArmourButtonController>();
-            UpdateCharacterView(armourSprite.sprite, armourButtonController.isDisablingBaseLayer);
+            var armourSprite = armourButtonController.actualImage;
+            
+            UpdateCharacterView(armourSprite, armourButtonController.isDisablingBaseLayer);
             UpdateStatsView(armourButtonController);
 
             _selectedArmour = obj;
