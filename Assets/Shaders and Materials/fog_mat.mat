@@ -41,13 +41,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Dist_From_Center: 30
+    - _Dist_From_Center: 0.09997941
     - _Max_Distance: 1.9
     - _Max_Distance_From_Player: 3
     - _dist_from_edge: 20
     m_Colors:
     - _Dist_From_Edges: {r: 28.8, g: 1088.29, b: 0, a: 0}
     - _Edge_Transparency: {r: 30, g: 11.1, b: 0, a: 0}
-    - _Player_Position: {r: 57.482334, g: -5.211391, b: -0.08333022, a: 0}
+    - _Player_Position: {r: 11.931174, g: -0.4747408, b: -0.08333078, a: 0}
     - _smoothstep: {r: 23.3, g: 0.4, b: 0, a: 0}
   m_BuildTextureStacks: []
