@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -6,7 +7,7 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100;
-
+    [SerializeField] private int deathCost = 5;
 
     private float _currentHealth;
     private bool healthInnerSet;
@@ -62,6 +63,14 @@ public class Damageable : MonoBehaviour
         if (agent != null)
         {
             agent.enabled = false;
+        }
+        
+        // money manager part
+        if (gameObject.CompareTag("Player")) return;
+        var moneyManager = MoneyManager.Instance;
+        if (moneyManager != null)
+        {
+            moneyManager.AddMoney(deathCost);
         }
     }
 }

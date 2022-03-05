@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Actors;
+using Managers;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,7 +14,9 @@ namespace UI
         private BattleManager _battleManager;
         private GameObject _player;
         private Damageable _playerDamageable;
+
         private PlayerController _playerController;
+
         // private PersonController _playerPersonController;
         private StaminaController _playerStaminaController;
 
@@ -24,6 +27,7 @@ namespace UI
         public GameObject currentTurnObject;
         public GameObject battleBeginsMessage;
         public GameObject endTurnButton;
+        [SerializeField] private TextMeshProUGUI moneyTMP;
 
         private void Start()
         {
@@ -51,6 +55,14 @@ namespace UI
             {
                 _playerStaminaController.onCurrentStaminaChange.AddListener(OnPlayerStaminaChange);
             }
+
+
+            // money manager part
+            MoneyManager.Instance.onMoneyChanged.AddListener(currentMoney =>
+            {
+                moneyTMP.text = $"Money: {currentMoney}";
+            });
+            moneyTMP.text = $"Money: {MoneyManager.Instance.currentMoney}";
         }
 
         private void OnCurrentActorChange(IActorController currentActor)
@@ -89,7 +101,7 @@ namespace UI
                 Destroy(child.gameObject);
             }
 
-            for (int i = (int)current; i > 0; i--)
+            for (int i = (int) current; i > 0; i--)
             {
                 Instantiate(staminaUnit, staminaBar.transform);
             }
